@@ -1,0 +1,106 @@
+
+<html>
+<head>
+    <title>Parkhaus</title>
+</head>
+<body>
+<script type="text/javascript">
+    if (window.location.search != '')
+        var url = window.location.search;
+    var anzahlParkplaetze = parseInt((url.replace('?anzahl=','')),10);
+</script>
+    <h1>Parkhaus</h1>
+<h2>Autos im Parkhaus:</h2>
+<h4>Anzahl Freie Parkplaetze:</h4>
+<p id="bereich1">
+</p>
+<button onclick="myFun()">Neues Auto in Parkhaus</button>
+<select id="autosImParkhaus"></select>
+<input type="submit" value="Auto aus Liste auswaehlen und dann hier zum Bezahlen klicken" onclick="bezahlen()">
+<script type="text/javascript">
+    var i=0;
+    var ParkhausSize=0;
+    ParkhausSize=parseInt(anzahlParkplaetze.valueOf(),10);
+    var PreisProStunde=2.0;
+    var arrayAuto=[];
+    var anzeigeAutos=[];
+    var bezahlAutosArray=[];
+    function x(){if(ParkhausSize>0){document.getElementsByTagName('p')[0].innerText=""+ParkhausSize-i+"";}}
+    document.getElementById("bereich1").innerText=""+ParkhausSize-i+"";
+    var BezahlteAutos=function (idd,datee) {
+        this.id=idd;
+        this.date=datee;
+        this.rausgefahren=new Date();
+        this.preis;
+    }
+    var Auto=function () {
+        this.id=Math.random();
+        this.date=new Date();
+        function Getid() {
+            return this.id;
+        }
+    }
+
+    function myFun() {
+        if(i<ParkhausSize) {
+
+            i=i+1;
+            x();
+            a=new Auto();
+            arrayAuto.push(a);
+            //in anzeige Liste eintragen
+            var selectElement = document.getElementById('autosImParkhaus');
+            var option = new Option('Autoid: '+a.id);
+            selectElement.options[i] = option;
+
+
+        }
+        else
+        {
+            window.alert("Das Parkhaus ist voll");
+        }
+
+
+
+    }
+    function listeRefresh () {
+        var selectElement = document.getElementById('autosImParkhaus');
+
+        var kkkk;
+        for(kkkk=0;kkkk<arrayAuto.length;kkkk++){
+            var option1 = new Option('Autoid: '+arrayAuto[kkkk].id);
+            selectElement.options[kkkk] = option1;}
+    }
+    </script>
+<script>
+    function bezahlen() {
+
+        var neuesHelpArray=[];
+        if(i==0){
+            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+        }
+        else{
+            var liste=document.getElementById("autosImParkhaus");
+            var strUser = liste.options[liste.selectedIndex].value;
+            var splittet=strUser.split(": ");
+            var kkk;
+            for(kkk=0;kkk<arrayAuto.length;kkk++){
+            if(splittet[1]==arrayAuto[kkk].id){
+                b=BezahlteAutos(arrayAuto[kkk].id,arrayAuto[kkk].date);
+                bezahlAutosArray.push(b);
+
+            }else{
+                neuesHelpArray.push(arrayAuto[kkk]);
+            }}
+            var x;
+            var liste=document.getElementById("autosImParkhaus");
+            for(x=0;x<arrayAuto.length;x++){
+                liste.options[x]=null;
+            }
+            arrayAuto=neuesHelpArray;
+            listeRefresh();
+        }
+    }
+</script>
+</body>
+</html>
