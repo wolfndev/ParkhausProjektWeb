@@ -73,6 +73,57 @@
     }
     </script>
 <script>
+
+// Klasse für Kunden erstellen
+class Kunde{
+constructor(id,name){
+    this.id = id;
+    this.name = name;
+    this.alter = alter;
+}
+
+get name(){
+    return this.name;
+}
+
+}
+
+// Klasse für Familie
+class Famile extends Kunde{
+
+constructor(id,name,anzahlPersonen){
+    super(id,name);
+    this.anzahlPersonen = anzahlPersonen;
+}
+
+
+}
+
+// Klasse für Mitarbeiter des Parkhauses
+class Mitarbeiter{
+
+constructor(id,name,alter,gehalt,arbeitsbezeichnung){
+    this.id = id;
+    this.name = name;
+    this.gehalt = gehalt;
+    this.arbeitsbezeichnung = arbeitsbezeichnung;
+}
+
+get name(){
+    return this.name;
+}
+
+get gehalt(){
+    return this.gehalt;
+}
+
+get arbeitsbezeichnung(){
+    return this.arbeitsbezeichnung;
+}
+
+
+}
+
     function bezahlen() {
 
         var neuesHelpArray=[];
@@ -101,6 +152,7 @@
             listeRefresh();
         }
     }
+
 </script>
 </body>
 </html>
