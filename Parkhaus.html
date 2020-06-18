@@ -124,7 +124,7 @@ constructor(id,name,anzahlPersonen){
 // Klasse für Mitarbeiter des Parkhauses
 class Mitarbeiter{
 
-constructor(id,name,alter,gehalt,arbeitsbezeichnung){
+constructor(id,name,gehalt,arbeitsbezeichnung){
     this.id = id;
     this.name = name;
     this.gehalt = gehalt;
@@ -145,6 +145,43 @@ get arbeitsbezeichnung(){
 
 
 }
+
+// Klasse der Manager
+class Manager extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
+    }
+}
+
+// Klasse der Parkhausbetreiber
+class Parkhausbetreiber extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
+    }
+}
+
+// Klasse der Schrankenwärter
+class Schrankenwärter extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
+    }
+}
+
+// Klasse der Einweiser
+class Einweiser extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
+    }
+}
+
+// Funktion, um ein Objekt in JSON-Format zu überführen
+    function createJSON(Cars){
+
+       var string = JSON.stringify(Cars);
+       console.log(string);
+
+
+    }
 
     function bezahlen() {
 
@@ -171,6 +208,8 @@ get arbeitsbezeichnung(){
                 liste.options[x]=null;
             }
             arrayAuto=neuesHelpArray;
+            console.log(arrayAuto);
+            createJSON(arrayAuto);
             listeRefresh();
         }
     }
