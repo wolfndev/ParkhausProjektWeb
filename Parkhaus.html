@@ -14,9 +14,31 @@
 <h4>Anzahl Freie Parkplaetze:</h4>
 <p id="bereich1">
 </p>
+
 <button onclick="myFun()">Neues Auto in Parkhaus</button>
 <select id="autosImParkhaus"></select>
 <input type="submit" value="Auto aus Liste auswaehlen und dann hier zum Bezahlen klicken" onclick="bezahlen()">
+<form  id="Bezahlvorgang">
+        <h1>Bezahlen</h1>
+       <label for="Ticket-Nr.">Ticket-Nr.
+           <input id="Ticket-Nr." name="Ticket-Nr.">
+       </label>
+        <h3>Sondertarif</h3>
+        <input type="radio" id="keintarif" name="tarif" value="kein">
+        <label for="keintarif">Kein</label>
+       <input type="radio" id="familientarif" name="tarif" value="familie">
+       <label for="familientarif">Familie</label>
+       <input type="radio" id="mitarbeitertarif" name="tarif" value="mitarbeiter">
+       <label for="mitarbeitertarif">Mitarbeiter</label>
+       <input type="radio" id="behindertentarif" name="tarif" value="behindert">
+       <label for="behindertentarif">Behindert</label>
+       <input type="radio" id="frauentarif" name="tarif" value="frau">
+       <label for="frauentarif">Frau</label>
+    </br>
+    </br>
+        <button type="reset">Wiederrufen</button>
+        <button type="submit">Bestätigen</button>
+    </form>
 <script type="text/javascript">
     var i=0;
     var ParkhausSize=0;
