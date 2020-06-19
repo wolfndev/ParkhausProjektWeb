@@ -4,6 +4,9 @@
     <title>Parkhaus</title>
 </head>
 <body>
+<div id="digital-clock"></div>
+
+
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
@@ -39,6 +42,7 @@
         <button type="reset">Wiederrufen</button>
         <button type="submit">Bestätigen</button>
     </form>
+
 <script type="text/javascript">
     var i=0;
     var ParkhausSize=0;
@@ -101,7 +105,7 @@ class Kunde{
 constructor(id,name){
     this.id = id;
     this.name = name;
-    this.alter = alter;
+   
 }
 
 get name(){
@@ -173,6 +177,15 @@ class Einweiser extends Mitarbeiter{
         super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
+
+// Klasse der Investoren
+class Investor extends Kunde{   
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
+    }
+}
+
+
 
 // Funktion, um ein Objekt in JSON-Format zu überführen
     function createJSON(Cars){
