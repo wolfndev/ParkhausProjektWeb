@@ -6,8 +6,8 @@ function getCurrentTime(){
     sec = correctTime(sec);
     min = correctTime(min);
     hour = correctTime(hour);
-
-    document.getElementById("digital-clock").innerText = hour + " : " + min + " : " + sec;
+    console.log(hour);
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec;
     var l = setTimeout(function(){getCurrentTime()},1000);
     
 }
@@ -18,6 +18,6 @@ function correctTime(t){
     }else{
         return t;
     }
-
-    getCurrentTime();
 }
+
+getCurrentTime();
