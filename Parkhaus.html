@@ -6,8 +6,7 @@
 </head>
 <body>
 
-<div id="clock">Clock</div>
-<script src="javascript/digitalclock.js"></script>
+
 
 
 <script type="text/javascript">
@@ -15,8 +14,12 @@
         var url = window.location.search;
     var anzahlParkplaetze = parseInt((url.replace('?anzahl=','')),10);
 </script>
-    <h1>Parkhaus</h1>
+<h1>Parkhaus</h1>
+<h2>Uhrzeit:</h2>
+<div id="digitalclock" class="clock">Clock</div>
+<script src="javascript/digitalclock.js"></script>
 <h2>Autos im Parkhaus:</h2>
+<h4>Abzahl Parkplaetze gesamt:</h4>
 <h4>Anzahl Freie Parkplaetze:</h4>
 <p id="bereich1">
 </p>

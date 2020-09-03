@@ -7,7 +7,7 @@ function getCurrentTime(){
     min = correctTime(min);
     hour = correctTime(hour);
     console.log(hour);
-    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec;
+    document.getElementById("digitalclock").innerText = hour + " : " + min + " : " + sec;
     var l = setTimeout(function(){getCurrentTime()},1000);
     
 }
