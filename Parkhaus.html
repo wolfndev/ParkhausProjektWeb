@@ -12,7 +12,7 @@
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
-    var anzahlParkplaetze = parseInt((url.replace('?anzahl=','')),10);
+    var parkspacesCount = parseInt((url.replace('?count=','')),10);
 </script>
 <h1>Parkhaus</h1>
 <h2>Uhrzeit:</h2>
@@ -26,9 +26,9 @@
 
 <button onclick="myFun()">Neues Auto in Parkhaus</button>
 <select id="autosImParkhaus"></select>
-<input type="submit" value="Auto aus Liste auswaehlen und dann hier zum Bezahlen klicken" onclick="bezahlen()">
+<input type="submit" value="Auto aus list auswaehlen und dann hier zum pay klicken" onclick="pay()">
 <form  id="Bezahlvorgang">
-        <h1>Bezahlen</h1>
+        <h1>pay</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
            <input id="Ticket-Nr." name="Ticket-Nr.">
        </label>
@@ -37,8 +37,8 @@
         <label for="keintarif">Kein</label>
        <input type="radio" id="familientarif" name="tarif" value="familie">
        <label for="familientarif">Familie</label>
-       <input type="radio" id="mitarbeitertarif" name="tarif" value="mitarbeiter">
-       <label for="mitarbeitertarif">Mitarbeiter</label>
+       <input type="radio" id="Employeetarif" name="tarif" value="Employee">
+       <label for="Employeetarif">Employee</label>
        <input type="radio" id="behindertentarif" name="tarif" value="behindert">
        <label for="behindertentarif">Behindert</label>
        <input type="radio" id="frauentarif" name="tarif" value="frau">
@@ -51,19 +51,19 @@
 
 <script type="text/javascript">
     var i=0;
-    var ParkhausSize=0;
-    ParkhausSize=parseInt(anzahlParkplaetze.valueOf(),10);
-    var PreisProStunde=2.0;
-    var arrayAuto=[];
-    var anzeigeAutos=[];
-    var bezahlAutosArray=[];
-    function x(){if(ParkhausSize>0){document.getElementsByTagName('p')[0].innerText=""+ParkhausSize-i+"";}}
-    document.getElementById("bereich1").innerText=""+ParkhausSize-i+"";
-    var BezahlteAutos=function (idd,datee) {
+    var parkhouseSize=0;
+    parkhouseSize=parseInt(parkspacesCount.valueOf(),10);
+    var pricePerHour=2.0;
+    var carArray=[];
+    var carsToDisplay=[];
+    var payedCarsArray=[];
+    function x(){if(parkhouseSize>0){document.getElementsByTagName('p')[0].innerText=""+parkhouseSize-i+"";}}
+    document.getElementById("bereich1").innerText=""+parkhouseSize-i+"";
+    var payedCars=function (idd,datee) {
         this.id=idd;
         this.date=datee;
-        this.rausgefahren=new Date();
-        this.preis;
+        this.leftParkhouse=new Date();
+        this.price;
     }
     var Auto=function () {
         this.id=Math.random();
@@ -74,16 +74,16 @@
     }
 
     function myFun() {
-        if(i<ParkhausSize) {
+        if(i<parkhouseSize) {
 
             i=i+1;
             x();
             a=new Auto();
-            arrayAuto.push(a);
-            //in anzeige Liste eintragen
-            var selectElement = document.getElementById('autosImParkhaus');
+            carArray.push(a);
+            //in anzeige list eintragen
+            var selectedElement = document.getElementById('autosImParkhaus');
             var option = new Option('Autoid: '+a.id);
-            selectElement.options[i] = option;
+         selectedElement.options[i] = option;
 
 
         }
@@ -95,19 +95,19 @@
 
 
     }
-    function listeRefresh () {
-        var selectElement = document.getElementById('autosImParkhaus');
+    function listRefresh () {
+        var selectedElement = document.getElementById('autosImParkhaus');
 
         var kkkk;
-        for(kkkk=0;kkkk<arrayAuto.length;kkkk++){
-            var option1 = new Option('Autoid: '+arrayAuto[kkkk].id);
-            selectElement.options[kkkk] = option1;}
+        for(kkkk=0;kkkk<carArray.length;kkkk++){
+            var option1 = new Option('Autoid: '+carArray[kkkk].id);
+         selectedElement.options[kkkk] = option1;}
     }
     </script>
 <script>
 
-// Klasse für Kunden erstellen
-class Kunde{
+// Klasse für Customern erstellen
+class Customer{
 constructor(id,name){
     this.id = id;
     this.name = name;
@@ -121,73 +121,73 @@ get name(){
 }
 
 // Klasse für Familie
-class Famile extends Kunde{
+class Family extends Customer{
 
-constructor(id,name,anzahlPersonen){
+constructor(id,name,peopleCount){
     super(id,name);
-    this.anzahlPersonen = anzahlPersonen;
+    this.peopleCount = peopleCount;
 }
 
 
 }
 
-// Klasse für Mitarbeiter des Parkhauses
-class Mitarbeiter{
+// Klasse für Employee des Parkhauses
+class Employee{
 
-constructor(id,name,gehalt,arbeitsbezeichnung){
+constructor(id,name,payment,workingDescription){
     this.id = id;
     this.name = name;
-    this.gehalt = gehalt;
-    this.arbeitsbezeichnung = arbeitsbezeichnung;
+    this.payment = payment;
+    this.workingDescription = workingDescription;
 }
 
 get name(){
     return this.name;
 }
 
-get gehalt(){
-    return this.gehalt;
+get payment(){
+    return this.payment;
 }
 
-get arbeitsbezeichnung(){
-    return this.arbeitsbezeichnung;
+get workingDescription(){
+    return this.workingDescription;
 }
 
 
 }
 
 // Klasse der Manager
-class Manager extends Mitarbeiter{
-    constructor(id,name,gehalt,arbeitsbezeichnung){
-        super(id,name,gehalt,arbeitsbezeichnung);
+class Manager extends Employee{
+    constructor(id,name,payment,workingDescription){
+        super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der Parkhausbetreiber
-class Parkhausbetreiber extends Mitarbeiter{
-    constructor(id,name,gehalt,arbeitsbezeichnung){
-        super(id,name,gehalt,arbeitsbezeichnung);
+// Klasse der ParkhouseBoss
+class ParkhouseBoss extends Employee{
+    constructor(id,name,payment,workingDescription){
+        super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der Schrankenwärter
-class Schrankenwärter extends Mitarbeiter{
-    constructor(id,name,gehalt,arbeitsbezeichnung){
-        super(id,name,gehalt,arbeitsbezeichnung);
+// Klasse der crossingKeeper
+class crossingKeeper extends Employee{
+    constructor(id,name,payment,workingDescription){
+        super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der Einweiser
-class Einweiser extends Mitarbeiter{
-    constructor(id,name,gehalt,arbeitsbezeichnung){
-        super(id,name,gehalt,arbeitsbezeichnung);
+// Klasse der PositionAdapter
+class PositionAdapter extends Employee{
+    constructor(id,name,payment,workingDescription){
+        super(id,name,payment,workingDescription);
     }
 }
 
 // Klasse der Investoren
-class Investor extends Kunde{   
-    constructor(id,name,gehalt,arbeitsbezeichnung){
-        super(id,name,gehalt,arbeitsbezeichnung);
+class Investor extends Customer{   
+    constructor(id,name,payment,workingDescription){
+        super(id,name,payment,workingDescription);
     }
 }
 
@@ -202,34 +202,34 @@ class Investor extends Kunde{
 
     }
 
-    function bezahlen() {
+    function pay() {
 
-        var neuesHelpArray=[];
+        var helpArray=[];
         if(i==0){
-            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket pay");
         }
         else{
-            var liste=document.getElementById("autosImParkhaus");
-            var strUser = liste.options[liste.selectedIndex].value;
+            var list=document.getElementById("autosImParkhaus");
+            var strUser = list.options[list.selectedIndex].value;
             var splittet=strUser.split(": ");
             var kkk;
-            for(kkk=0;kkk<arrayAuto.length;kkk++){
-            if(splittet[1]==arrayAuto[kkk].id){
-                b=BezahlteAutos(arrayAuto[kkk].id,arrayAuto[kkk].date);
-                bezahlAutosArray.push(b);
+            for(kkk=0;kkk<carArray.length;kkk++){
+            if(splittet[1]==carArray[kkk].id){
+                b=payedCars(carArray[kkk].id,carArray[kkk].date);
+                payedCarsArray.push(b);
 
             }else{
-                neuesHelpArray.push(arrayAuto[kkk]);
+                helpArray.push(carArray[kkk]);
             }}
             var x;
-            var liste=document.getElementById("autosImParkhaus");
-            for(x=0;x<arrayAuto.length;x++){
-                liste.options[x]=null;
+            var list=document.getElementById("autosImParkhaus");
+            for(x=0;x<carArray.length;x++){
+                list.options[x]=null;
             }
-            arrayAuto=neuesHelpArray;
-            console.log(arrayAuto);
-            createJSON(arrayAuto);
-            listeRefresh();
+            carArray=helpArray;
+            console.log(carArray);
+            createJSON(carArray);
+            listRefresh();
         }
     }
 
