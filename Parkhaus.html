@@ -24,9 +24,9 @@
 <p id="bereich1">
 </p>
 
-<button onclick="myFun()">Neues Auto in Parkhaus</button>
+<button onclick="myFun()">Neues Auto im Parkhaus</button>
 <select id="autosImParkhaus"></select>
-<input type="submit" value="Auto aus list auswaehlen und dann hier zum pay klicken" onclick="pay()">
+<input type="submit" value="Auto aus list auswählen und dann hier zum pay klicken" onclick="pay()">
 <form  id="Bezahlvorgang">
         <h1>pay</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
@@ -45,7 +45,7 @@
        <label for="frauentarif">Frau</label>
     </br>
     </br>
-        <button type="reset">Wiederrufen</button>
+        <button type="reset">Widerrufen</button>
         <button type="submit">Bestätigen</button>
     </form>
 
@@ -89,7 +89,7 @@
         }
         else
         {
-            window.alert("Das Parkhaus ist voll");
+            window.alert("Das Parkhaus ist voll.");
         }
 
 
@@ -106,7 +106,7 @@
     </script>
 <script>
 
-// Klasse für Customern erstellen
+// Class for Customers
 class Customer{
 constructor(id,name){
     this.id = id;
@@ -120,7 +120,7 @@ get name(){
 
 }
 
-// Klasse für Familie
+// Class for Family
 class Family extends Customer{
 
 constructor(id,name,peopleCount){
@@ -131,7 +131,7 @@ constructor(id,name,peopleCount){
 
 }
 
-// Klasse für Employee des Parkhauses
+// Class Employee of parking garage
 class Employee{
 
 constructor(id,name,payment,workingDescription){
@@ -156,35 +156,35 @@ get workingDescription(){
 
 }
 
-// Klasse der Manager
+// Class Manager of parking garage
 class Manager extends Employee{
     constructor(id,name,payment,workingDescription){
         super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der ParkhouseBoss
-class ParkhouseBoss extends Employee{
+// Class Boss of parking garage
+class PgBoss extends Employee{
     constructor(id,name,payment,workingDescription){
         super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der crossingKeeper
+// Class Crossing Keeper of parking garage
 class crossingKeeper extends Employee{
     constructor(id,name,payment,workingDescription){
         super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der PositionAdapter
+// Class PositionAdapter
 class PositionAdapter extends Employee{
     constructor(id,name,payment,workingDescription){
         super(id,name,payment,workingDescription);
     }
 }
 
-// Klasse der Investoren
+// Class Investor
 class Investor extends Customer{   
     constructor(id,name,payment,workingDescription){
         super(id,name,payment,workingDescription);
