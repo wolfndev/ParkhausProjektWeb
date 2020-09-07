@@ -19,14 +19,14 @@
 <div id="digitalclock" class="clock">Clock</div>
 <script src="javascript/digitalclock.js"></script>
 <h2>Autos im Parkhaus:</h2>
-<h4>Abzahl Parkplaetze gesamt:</h4>
-<h4>Anzahl Freie Parkplaetze:</h4>
+<h4>Parkplätze ins:   </h4>
+<h4>Freie Parkplätze: </h4>
 <p id="bereich1">
 </p>
 
 <button onclick="myFun()">Neues Auto im Parkhaus</button>
 <select id="autosImParkhaus"></select>
-<input type="submit" value="Auto aus list auswählen und dann hier zum pay klicken" onclick="pay()">
+<input type="submit" value="Auto aus der Liste auswählen und dann hier auf pay klicken" onclick="pay()">
 <form  id="Bezahlvorgang">
         <h1>pay</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
@@ -45,8 +45,8 @@
        <label for="frauentarif">Frau</label>
     </br>
     </br>
-        <button type="reset">Widerrufen</button>
         <button type="submit">Bestätigen</button>
+        <button type="reset">Widerrufen</button>
     </form>
 
 <script type="text/javascript">
@@ -82,7 +82,7 @@
             carArray.push(a);
             //in anzeige list eintragen
             var selectedElement = document.getElementById('autosImParkhaus');
-            var option = new Option('Autoid: '+a.id);
+            var option = new Option('AutoId: '+a.id);
          selectedElement.options[i] = option;
 
 
@@ -100,7 +100,7 @@
 
         var kkkk;
         for(kkkk=0;kkkk<carArray.length;kkkk++){
-            var option1 = new Option('Autoid: '+carArray[kkkk].id);
+            var option1 = new Option('AutoId: '+carArray[kkkk].id);
          selectedElement.options[kkkk] = option1;}
     }
     </script>
@@ -195,7 +195,7 @@ class Investor extends Customer{
 
 // Funktion, um ein Objekt in JSON-Format zu überführen
     function createJSON(Cars){
-
+       
        var string = JSON.stringify(Cars);
        console.log(string);
 
@@ -206,7 +206,7 @@ class Investor extends Customer{
 
         var helpArray=[];
         if(i==0){
-            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket pay");
+            window.alert("Es ist noch kein Auto bzw. das Auto ist nicht mehr im Parkhaus. Sie können noch kein Ticket pay");
         }
         else{
             var list=document.getElementById("autosImParkhaus");
