@@ -12,58 +12,63 @@
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
-    var parkspacesCount = parseInt((url.replace('?count=','')),10);
+    var parkplatzspaceCount = parseInt((url.replace('?anzahl=','')),10);
 </script>
 <h1>Parkhaus</h1>
 <h2>Uhrzeit:</h2>
 <div id="digitalclock" class="clock">Clock</div>
 <script src="javascript/digitalclock.js"></script>
-<h2>Autos im Parkhaus:</h2>
-<h4>Parkplätze ins:   </h4>
-<h4>Freie Parkplätze: </h4>
-<p id="bereich1">
+<h4>Anzahl Parkplätze gesamt:</h4>
+<p id="anzahlParkplaetzeGesamt"></p>
+<h4>Anzahl Freie Parkplätze:</h4>
+<p id="anzahlFreieParkplaetze">
 </p>
 
-<button onclick="myFun()">Neues Auto im Parkhaus</button>
-<select id="autosImParkhaus"></select>
-<input type="submit" value="Auto aus der Liste auswählen und dann hier auf pay klicken" onclick="pay()">
+<button onclick="CarsInList()">Neues Auto in Parkhaus</button>
 <form  id="Bezahlvorgang">
-        <h1>pay</h1>
+        <h1>Bezahlen</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
-           <input id="Ticket-Nr." name="Ticket-Nr.">
+           <select id="autosImParkhausbezahlen"></select>
        </label>
         <h3>Sondertarif</h3>
         <input type="radio" id="keintarif" name="tarif" value="kein">
         <label for="keintarif">Kein</label>
        <input type="radio" id="familientarif" name="tarif" value="familie">
        <label for="familientarif">Familie</label>
-       <input type="radio" id="Employeetarif" name="tarif" value="Employee">
-       <label for="Employeetarif">Employee</label>
+       <input type="radio" id="mitarbeitertarif" name="tarif" value="mitarbeiter">
+       <label for="mitarbeitertarif">Mitarbeiter</label>
        <input type="radio" id="behindertentarif" name="tarif" value="behindert">
        <label for="behindertentarif">Behindert</label>
        <input type="radio" id="frauentarif" name="tarif" value="frau">
        <label for="frauentarif">Frau</label>
     </br>
     </br>
-        <button type="submit">Bestätigen</button>
-        <button type="reset">Widerrufen</button>
+        <button type="reset">Auswahl Tarif Wiederrufen</button>
     </form>
+ <button onclick="pay()">Bezahlen</button>
+</br>
+</br>
+<select id="autosImParkhausbezahltLoeschen"></select>
+
 
 <script type="text/javascript">
     var i=0;
-    var parkhouseSize=0;
-    parkhouseSize=parseInt(parkspacesCount.valueOf(),10);
+    var loschenhilfemusswiederwech=0;
+    var parkhausSize=0;
+    parkhausSize=parseInt(parkplatzspaceCount.valueOf(),10);
     var pricePerHour=2.0;
-    var carArray=[];
-    var carsToDisplay=[];
+    var CarArray=[];
     var payedCarsArray=[];
-    function x(){if(parkhouseSize>0){document.getElementsByTagName('p')[0].innerText=""+parkhouseSize-i+"";}}
-    document.getElementById("bereich1").innerText=""+parkhouseSize-i+"";
-    var payedCars=function (idd,datee) {
+    document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
+    document.getElementById("anzahlParkplaetzeGesamt").innerText=""+parkhausSize+"";
+    function x() {if(parkhausSize>0)
+    {document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";}}
+    var payedCars=function (idd,datee,datenow,pricee,tariff) {
         this.id=idd;
         this.date=datee;
-        this.leftParkhouse=new Date();
-        this.price;
+        this.leftParkhouse=datenow;
+        this.price=pricee;
+        this.tarif=tariff;
     }
     var Auto=function () {
         this.id=Math.random();
@@ -73,41 +78,102 @@
         }
     }
 
-    function myFun() {
-        if(i<parkhouseSize) {
+    function CarsInList() {
+        if(i<parkhausSize) {
 
             i=i+1;
-            x();
+            x()
             a=new Auto();
-            carArray.push(a);
-            //in anzeige list eintragen
-            var selectedElement = document.getElementById('autosImParkhaus');
-            var option = new Option('AutoId: '+a.id);
-         selectedElement.options[i] = option;
-
+            CarArray.push(a);
+            //in anzeige Liste eintragen
+            var option = new Option('Autoid: '+a.id);
+            var selectpayList= document.getElementById('autosImParkhausbezahlen');
+            selectpayList.options[i-1]=option;
 
         }
         else
         {
-            window.alert("Das Parkhaus ist voll.");
+            window.alert("Das Parkhaus ist voll");
         }
 
 
 
     }
-    function listRefresh () {
-        var selectedElement = document.getElementById('autosImParkhaus');
-
+    function listeRefresh () {
+        var selectElement = document.getElementById('autosImParkhausbezahlen');
         var kkkk;
-        for(kkkk=0;kkkk<carArray.length;kkkk++){
-            var option1 = new Option('AutoId: '+carArray[kkkk].id);
-         selectedElement.options[kkkk] = option1;}
+        for(kkkk=0;kkkk<CarArray.length;kkkk++){
+            var option1 = new Option('Autoid: '+CarArray[kkkk].id);
+            selectElement.options[kkkk] = option1;
+        }
     }
+
+function pay(){
+    var newHelpArray=[];
+        if(i==0){
+            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+        }
+        else{
+            i=i-1;
+            var list=document.getElementById("autosImParkhausbezahlen");
+            var strUser = list.options[list.selectedIndex].value;
+            var splittet=strUser.split(": ");
+            var kkk;
+            for(kkk=0;kkk<CarArray.length;kkk++){
+            if(splittet[1]==CarArray[kkk].id){
+                var datenow=new Date();
+                var millisecondsSubDate=(datenow-CarArray[kkk].date);
+                var secondsSubDates=millisecondsSubDate/1000;
+                var priceCar=secondsSubDates*pricePerHour;
+                var tarif;
+                document.getElementById('keintarif').checked=true;
+                if(document.getElementById('keintarif').checked){
+                        tarif='keintariif';
+                }
+                else if(document.getElementById('familientarif').checked){
+                        tarif='familientarif';
+                        var familientarif=0.10;
+                        priceCar=(priceCar)-(priceCar*familientarif);
+                }
+                else if(document.getElementById('mitarbeitertarif').checked){
+                        tarif='mitarbeitertarif';
+                        var mitarbeitertarif=0.2;
+                        priceCar=(priceCar)-(priceCar*mitarbeitertarif);
+                }
+                else if(document.getElementById('behindertentarif').checked){
+                        tarif='behindertentarif';
+                        var behindertentarif=0.3;
+                        priceCar=(priceCar)-(priceCar*behindertentarif);
+                }     
+                else if(document.getElementById('frauentarif').checked){
+                        tarif='frauentarif';
+                        var frauentarif=0.05;
+                        priceCar=(priceCar)-(priceCar*frauentarif);
+                }                             
+                b=payedCars(CarArray[kkk].id,CarArray[kkk].date,datenow,priceCar,tarif);
+                payedCarsArray.push(b);
+                
+
+
+            }else{
+                newHelpArray.push(CarArray[kkk]);
+            }}
+            var x;
+            var list=document.getElementById("autosImParkhausbezahlen");
+            for(x=0;x<CarArray.length;x++){
+                list.options[x]=null;
+            }
+            CarArray=newHelpArray;
+            
+
+            listeRefresh();
+        }
+}
     </script>
 <script>
 
-// Class for Customers
-class Customer{
+// Klasse für Kunden erstellen
+class Kunde{
 constructor(id,name){
     this.id = id;
     this.name = name;
@@ -120,74 +186,74 @@ get name(){
 
 }
 
-// Class for Family
-class Family extends Customer{
+// Klasse für Familie
+class Famile extends Kunde{
 
-constructor(id,name,peopleCount){
+constructor(id,name,anzahlPersonen){
     super(id,name);
-    this.peopleCount = peopleCount;
+    this.anzahlPersonen = anzahlPersonen;
 }
 
 
 }
 
-// Class Employee of parking garage
-class Employee{
+// Klasse für Mitarbeiter des Parkhauses
+class Mitarbeiter{
 
-constructor(id,name,payment,workingDescription){
+constructor(id,name,gehalt,arbeitsbezeichnung){
     this.id = id;
     this.name = name;
-    this.payment = payment;
-    this.workingDescription = workingDescription;
+    this.gehalt = gehalt;
+    this.arbeitsbezeichnung = arbeitsbezeichnung;
 }
 
 get name(){
     return this.name;
 }
 
-get payment(){
-    return this.payment;
+get gehalt(){
+    return this.gehalt;
 }
 
-get workingDescription(){
-    return this.workingDescription;
+get arbeitsbezeichnung(){
+    return this.arbeitsbezeichnung;
 }
 
 
 }
 
-// Class Manager of parking garage
-class Manager extends Employee{
-    constructor(id,name,payment,workingDescription){
-        super(id,name,payment,workingDescription);
+// Klasse der Manager
+class Manager extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// Class Boss of parking garage
-class PgBoss extends Employee{
-    constructor(id,name,payment,workingDescription){
-        super(id,name,payment,workingDescription);
+// Klasse der Parkhausbetreiber
+class Parkhausbetreiber extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// Class Crossing Keeper of parking garage
-class crossingKeeper extends Employee{
-    constructor(id,name,payment,workingDescription){
-        super(id,name,payment,workingDescription);
+// Klasse der Schrankenwärter
+class Schrankenwärter extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// Class PositionAdapter
-class PositionAdapter extends Employee{
-    constructor(id,name,payment,workingDescription){
-        super(id,name,payment,workingDescription);
+// Klasse der Einweiser
+class Einweiser extends Mitarbeiter{
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// Class Investor
-class Investor extends Customer{   
-    constructor(id,name,payment,workingDescription){
-        super(id,name,payment,workingDescription);
+// Klasse der Investoren
+class Investor extends Kunde{   
+    constructor(id,name,gehalt,arbeitsbezeichnung){
+        super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
@@ -195,43 +261,13 @@ class Investor extends Customer{
 
 // Funktion, um ein Objekt in JSON-Format zu überführen
     function createJSON(Cars){
-       
+
        var string = JSON.stringify(Cars);
        console.log(string);
 
 
     }
 
-    function pay() {
-
-        var helpArray=[];
-        if(i==0){
-            window.alert("Es ist noch kein Auto bzw. das Auto ist nicht mehr im Parkhaus. Sie können noch kein Ticket pay");
-        }
-        else{
-            var list=document.getElementById("autosImParkhaus");
-            var strUser = list.options[list.selectedIndex].value;
-            var splittet=strUser.split(": ");
-            var kkk;
-            for(kkk=0;kkk<carArray.length;kkk++){
-            if(splittet[1]==carArray[kkk].id){
-                b=payedCars(carArray[kkk].id,carArray[kkk].date);
-                payedCarsArray.push(b);
-
-            }else{
-                helpArray.push(carArray[kkk]);
-            }}
-            var x;
-            var list=document.getElementById("autosImParkhaus");
-            for(x=0;x<carArray.length;x++){
-                list.options[x]=null;
-            }
-            carArray=helpArray;
-            console.log(carArray);
-            createJSON(carArray);
-            listRefresh();
-        }
-    }
 
 </script>
 </body>
