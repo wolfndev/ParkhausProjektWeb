@@ -24,7 +24,7 @@
 <p id="anzahlFreieParkplaetze">
 </p>
 
-<button onclick="CarsInList()">Neues Auto in Parkhaus</button>
+<button id="btnNewCarToPark" onclick="CarsInList()">Neues Auto in Parkhaus</button>
 <form  id="Bezahlvorgang">
         <h1>Bezahlen</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
@@ -52,6 +52,84 @@
 
 
 <script type="text/javascript">
+// Observer
+function Observerlist(){
+    this.observerlist = [];
+}
+
+Observerlist.prototype.add = function(obj){
+    return this.observerlist.push(obj);
+}
+
+Observerlist.prototype.count = function(){
+    return this.observerlist.length;
+}
+
+Observerlist.prototype.get = function(index){
+    if(index > -1 && index < this.observerlist.length){
+        return this.observerlist[index];
+    }
+}
+
+Observerlist.prototype.indexOf = function(obj, startIndex){
+    var i = startIndex;
+
+    while(i < this.observerlist.length){
+        if(this.observerlist[i]===obj){
+            return i;
+        }
+        i++;
+    }
+
+    return -1;
+};
+
+Observerlist.prototype.removeAt = function(index){
+    this.observerlist.splice(index,1);
+}
+
+function Observer(){
+    this.update = function(){
+    
+    };
+}
+
+// Subscriber
+function Subject(){
+    this.observers = new Observerlist();
+}
+
+Subject.prototype.addObserver = function(observer){
+    this.observers.add(observer);
+}
+
+Subject.prototype.removeObserver = function(observer){
+    this.observers.removeAt(this.observers.indexOf(observer,0));
+}
+
+Subject.prototype.notify = function(context){
+    var observerCount = this.observers.count();
+    for(var i=0; i <observerCount; i++){
+        this.observers.get(i).update(context);
+    }
+}
+
+//Observer-Pattern
+function extend(obj,extension){
+    for(var key in extension){
+        obj[key] = extension[key];
+    }
+}
+
+
+
+
+
+
+
+
+
+
     var i=0;
     var loschenhilfemusswiederwech=0;
     var parkhausSize=0;
