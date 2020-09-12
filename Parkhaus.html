@@ -43,7 +43,8 @@
        <label for="frauentarif">Frau</label>
     </br>
     </br>
-        <button type="reset">Auswahl Tarif Wiederrufen</button>
+        <button type="submit">Best&aumltigen</button>
+        <button type="reset">Widerrufen</button>
     </form>
  <button onclick="pay()">Bezahlen</button>
 </br>
@@ -268,6 +269,35 @@ class Investor extends Kunde{
 
     }
 
+
+        var neuesHelpArray=[];
+        if(i==0){
+            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+        }
+        else{
+            var liste=document.getElementById("autosImParkhaus");
+            var strUser = liste.options[liste.selectedIndex].value;
+            var splittet=strUser.split(": ");
+            var kkk;
+            for(kkk=0;kkk<arrayAuto.length;kkk++){
+            if(splittet[1]==arrayAuto[kkk].id){
+                b=BezahlteAutos(arrayAuto[kkk].id,arrayAuto[kkk].date);
+                bezahlAutosArray.push(b);
+
+            }else{
+                neuesHelpArray.push(arrayAuto[kkk]);
+            }}
+            var x;
+            var liste=document.getElementById("autosImParkhaus");
+            for(x=0;x<arrayAuto.length;x++){
+                liste.options[x]=null;
+            }
+            arrayAuto=neuesHelpArray;
+            console.log(arrayAuto);
+            createJSON(arrayAuto);
+            listeRefresh();
+        }
+    }
 
 </script>
 </body>
