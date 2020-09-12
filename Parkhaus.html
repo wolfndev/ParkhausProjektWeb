@@ -94,7 +94,7 @@
         }
         else
         {
-            window.alert("Das Parkhaus ist voll");
+            window.alert("Das Parkhaus ist voll.");
         }
 
 
@@ -112,7 +112,7 @@
 function pay(){
     var newHelpArray=[];
         if(i==0){
-            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus. Sie können noch kein Ticket bezahlen.");
         }
         else{
             i=i-1;
@@ -173,7 +173,7 @@ function pay(){
     </script>
 <script>
 
-// Klasse für Kunden erstellen
+// Class for customers
 class Kunde{
 constructor(id,name){
     this.id = id;
@@ -187,7 +187,7 @@ get name(){
 
 }
 
-// Klasse für Familie
+// class Family
 class Famile extends Kunde{
 
 constructor(id,name,anzahlPersonen){
@@ -198,7 +198,7 @@ constructor(id,name,anzahlPersonen){
 
 }
 
-// Klasse für Mitarbeiter des Parkhauses
+// class Employee
 class Mitarbeiter{
 
 constructor(id,name,gehalt,arbeitsbezeichnung){
@@ -223,14 +223,14 @@ get arbeitsbezeichnung(){
 
 }
 
-// Klasse der Manager
+// class Manager
 class Manager extends Mitarbeiter{
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// Klasse der Parkhausbetreiber
+// class Boss of parking garage
 class Parkhausbetreiber extends Mitarbeiter{
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
@@ -251,7 +251,7 @@ class Einweiser extends Mitarbeiter{
     }
 }
 
-// Klasse der Investoren
+// class Investor
 class Investor extends Kunde{   
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
@@ -272,7 +272,7 @@ class Investor extends Kunde{
 
         var neuesHelpArray=[];
         if(i==0){
-            window.alert("ES ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
+            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus. Sie können noch kein Ticket bezahlen.");
         }
         else{
             var liste=document.getElementById("autosImParkhaus");
