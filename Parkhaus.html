@@ -22,10 +22,11 @@
 <p id="anzahlParkplaetzeGesamt"></p>
 <h4>Anzahl Freie Parkplätze:</h4>
 <p id="anzahlFreieParkplaetze">
+<h4>Anzahl an Besetzten Parkplätzen:</h4>
+<p id="anzahlBesetztParkplaetze">
 </p>
 
-<button id="btnNewCarToPark" onclick="CarsInList()">Neues Auto in Parkhaus</button>
-<div id="carPark"></div>
+<button onclick="CarsInList()">Neues Auto in Parkhaus</button>
 <form  id="Bezahlvorgang">
         <h1>Bezahlen</h1>
        <label for="Ticket-Nr.">Ticket-Nr.
@@ -44,126 +45,15 @@
        <label for="frauentarif">Frau</label>
     </br>
     </br>
-        <button type="submit">Best&aumltigen</button>
-        <button type="reset">Widerrufen</button>
+        <button type="reset">Auswahl Tarif Wiederrufen</button>
     </form>
- <button id="btnPay" onclick="pay()">Bezahlen</button>
+    <button id="btnPay" onclick="pay()">Bezahlen</button>
 </br>
 </br>
-<select id="autosImParkhausbezahltLoeschen"></select>
-<button id="addNewObserver">Add new Observer checkbox</button>
-<input id="mainCheckbox" type="checkbox"/>
-<div id="observersContainer"></div>
+
 
 <script type="text/javascript">
-
-
-// Define properties of the Observer
-function Observerlist(){
-    this.observerlist = [];
-}
-
-// Function for adding observers to the list
-Observerlist.prototype.add = function(obj){
-    return this.observerlist.push(obj);
-}
-// Function for counting the elements in the list
-Observerlist.prototype.count = function(){
-    return this.observerlist.length;
-}
-// Getting an element at an index
-Observerlist.prototype.get = function(index){
-    if(index > -1 && index < this.observerlist.length){
-        return this.observerlist[index];
-    }
-}
-// Getting the index of an element
-Observerlist.prototype.indexOf = function(obj, startIndex){
-    var i = startIndex;
-
-    while(i < this.observerlist.length){
-        if(this.observerlist[i]===obj){
-            return i;
-        }
-        i++;
-    }
-
-    return -1;
-};
-// Remove Element at a certain Index
-Observerlist.prototype.removeAt = function(index){
-    this.observerlist.splice(index,1);
-}
-// Defines the custom action an observer does
-function Observer(){
-    this.update = function(){
-    
-    };
-}
-
-
-// Subscriber
-function Subject(){
-    this.observers = new Observerlist();
-}
-// Adds an observer to the list
-Subject.prototype.addObserver = function(observer){
-    this.observers.add(observer);
-}
-// Removes an observer from the list
-Subject.prototype.removeObserver = function(observer){
-    this.observers.removeAt(this.observers.indexOf(observer,0));
-}
-// Notifies the observers, that an event has occured
-Subject.prototype.notify = function(context){
-    var observerCount = this.observers.count();
-    for(var i=0; i <observerCount; i++){
-        this.observers.get(i).update(context);
-    }
-}
-
-// Extends Objects
-function extend(obj,extension){
-    for(var key in extension){
-        obj[key] = extension[key];
-    }
-}
-// Variables that hold the Objects in the DOM
-var controlCheckbox = document.getElementById("btnPay"),
-    addBtn = document.getElementById("btnNewCarToPark"),
-    container = document.getElementById("carPark");
-
-extend(controlCheckbox, new Subject());
-
-// 
-controlCheckbox.onclick = function(){
-    controlCheckbox.notify(controlCheckbox.checked);
-};
-
-// This Button adds a new Observer
-addBtn.onclick = addNewObserver;
-// Function for adding an observer
-function addNewObserver(){
-    var check = document.createElement("input");
-    check.type = "checkbox";
-    extend(check,new Observer());
-    check.update = function(value){
-    console.log("Test")
-};
-
-controlCheckbox.addObserver(check);
-container.appendChild(check);
-
-};
-
-
-
-
-
-
-
     var i=0;
-    var loschenhilfemusswiederwech=0;
     var parkhausSize=0;
     parkhausSize=parseInt(parkplatzspaceCount.valueOf(),10);
     var pricePerHour=2.0;
@@ -171,8 +61,10 @@ container.appendChild(check);
     var payedCarsArray=[];
     document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
     document.getElementById("anzahlParkplaetzeGesamt").innerText=""+parkhausSize+"";
+    document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";
     function x() {if(parkhausSize>0)
-    {document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";}}
+    {document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
+    document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";}}
     var payedCars=function (idd,datee,datenow,pricee,tariff) {
         this.id=idd;
         this.date=datee;
@@ -203,7 +95,7 @@ container.appendChild(check);
         }
         else
         {
-            window.alert("Das Parkhaus ist voll.");
+            window.alert("Das Parkhaus ist voll");
         }
 
 
@@ -221,13 +113,15 @@ container.appendChild(check);
 function pay(){
     var newHelpArray=[];
         if(i==0){
-            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus. Sie können noch kein Ticket bezahlen.");
+            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus Sie Können noch kein Ticket bezahlen");
         }
         else{
             i=i-1;
             var list=document.getElementById("autosImParkhausbezahlen");
             var strUser = list.options[list.selectedIndex].value;
             var splittet=strUser.split(": ");
+            document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";
+            document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
             var kkk;
             for(kkk=0;kkk<CarArray.length;kkk++){
             if(splittet[1]==CarArray[kkk].id){
@@ -282,7 +176,7 @@ function pay(){
     </script>
 <script>
 
-// Class for customers
+// Klasse für Kunden erstellen
 class Kunde{
 constructor(id,name){
     this.id = id;
@@ -296,7 +190,7 @@ get name(){
 
 }
 
-// class Family
+// Klasse für Familie
 class Famile extends Kunde{
 
 constructor(id,name,anzahlPersonen){
@@ -307,7 +201,7 @@ constructor(id,name,anzahlPersonen){
 
 }
 
-// class Employee
+// Klasse für Mitarbeiter des Parkhauses
 class Mitarbeiter{
 
 constructor(id,name,gehalt,arbeitsbezeichnung){
@@ -332,14 +226,14 @@ get arbeitsbezeichnung(){
 
 }
 
-// class Manager
+// Klasse der Manager
 class Manager extends Mitarbeiter{
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
     }
 }
 
-// class Boss of parking garage
+// Klasse der Parkhausbetreiber
 class Parkhausbetreiber extends Mitarbeiter{
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
@@ -360,7 +254,7 @@ class Einweiser extends Mitarbeiter{
     }
 }
 
-// class Investor
+// Klasse der Investoren
 class Investor extends Kunde{   
     constructor(id,name,gehalt,arbeitsbezeichnung){
         super(id,name,gehalt,arbeitsbezeichnung);
@@ -378,35 +272,6 @@ class Investor extends Kunde{
 
     }
 
-
-        var neuesHelpArray=[];
-        if(i==0){
-            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus. Sie können noch kein Ticket bezahlen.");
-        }
-        else{
-            var liste=document.getElementById("autosImParkhaus");
-            var strUser = liste.options[liste.selectedIndex].value;
-            var splittet=strUser.split(": ");
-            var kkk;
-            for(kkk=0;kkk<arrayAuto.length;kkk++){
-            if(splittet[1]==arrayAuto[kkk].id){
-                b=BezahlteAutos(arrayAuto[kkk].id,arrayAuto[kkk].date);
-                bezahlAutosArray.push(b);
-
-            }else{
-                neuesHelpArray.push(arrayAuto[kkk]);
-            }}
-            var x;
-            var liste=document.getElementById("autosImParkhaus");
-            for(x=0;x<arrayAuto.length;x++){
-                liste.options[x]=null;
-            }
-            arrayAuto=neuesHelpArray;
-            console.log(arrayAuto);
-            createJSON(arrayAuto);
-            listeRefresh();
-        }
-    
 
 </script>
 </body>
