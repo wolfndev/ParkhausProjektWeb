@@ -17,8 +17,84 @@
 <h2>Aktuelle Uhrzeit:</h2>
 <div id="digitalclock" class="clock">Clock</div>
 <script src="javascript/digitalclock.js"></script>
+<br>
+<br>
+
+
+
+<h2>Öffnungszeiten:</h2>
+<table id="oeffnungszeiten">
+	<thead>
+		<tr>
+			<th>Wochentag</th>
+			<th>Von</th>
+			<th>bis</th>
+        </tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Montag - Freitag</td>
+			<td>06:00</td>
+			<td>22:00</td>
+		</tr>
+		<tr>
+			<td>Samstag</td>
+			<td>08:00</td>
+			<td>00:00</td>
+		</tr>
+		<tr>
+			<td>Sonntag</td>
+			<td>10:00</td>
+			<td>20:00</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2>Öffnungszeiten:</h2>
+<table id="preisliste">
+	<thead>
+		<tr>
+			<th>Personengruppe</th>
+			<th>Preis in Euro [€]</th>
+            <th>Vergünstigung in Prozent [%]</th>
+        </tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Kein</td>
+			<td>3,00</td>
+            <td>0</td>
+		</tr>
+		<tr>
+			<td>Familie</td>
+			<td>2,70</td>
+            <td>10</td>
+		</tr>
+		<tr>
+			<td>Frau</td>
+			<td>2,85</td>
+            <td>05</td>
+		</tr>
+        <tr>
+            <td>Person mit Behinderung</td>
+            <td>2,10</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Mitarbeiter</td>
+            <td>2,40</td>
+            <td>20</td>
+        </tr>
+	</tbody>
+</table>
+
+
+
 <canvas id="testChart" width="400" height="400"></canvas>
 <script src="javascript/charts.js"></script>
+
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
 <p id="anzahlParkplaetzeGesamt"></p>
 <h4>Anzahl Freie Parkpl&aumltze:</h4>
@@ -158,12 +234,12 @@
                     }
                     else if (document.getElementById('behindertentarif').checked) {
                         tarif = 'behindertentarif';
-                        var behindertentarif=0.3;
+                        var behindertentarif=0.30;
                         priceCar=(priceCar)-(priceCar*behindertentarif);
                     }
                     else if (document.getElementById('mitarbeitertarif').checked) {
                         tarif = 'mitarbeitertarif';
-                        var mitarbeitertarif = 0.2;
+                        var mitarbeitertarif = 0.20;
                         priceCar = (priceCar) - (priceCar * mitarbeitertarif);
                     }
                     b = payedCars(CarArray[kkk].id, CarArray[kkk].date, datenow, priceCar, tarif);
