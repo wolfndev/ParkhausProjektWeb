@@ -11,8 +11,24 @@
         <label for="anzahl">Anzahl Parklpl&aumltze angeben:</label>
         <input type="Number" name="anzahl" id="anzahl" size="25">
     </p>
-    <p><button type="submit">&Uumlbergeben</button></p>
+    <p>
+        <button type="submit">&Uumlbergeben</button>
+        <button type="reset">Eingabe l&oumlschen</button>
+    </p>
 </form>
+
+<script type="text/javascript">
+    function checkNumber(anzahl) {
+        var anzahlParkplatz = anzahl;
+
+        if (anzahlParkplatz <= 0) {
+            window.alert("Die Anzahl der Parkplätze im Parkhaus ist ungültig.");
+        }
+        else {
+            break;
+        }
+    }
+</script>
 
 </body>
 </html>
