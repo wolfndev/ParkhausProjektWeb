@@ -17,8 +17,8 @@
             color: white;
         }
     </style>
-    
 </head>
+
 <body>
 <script type="text/javascript">
     if (window.location.search != '')
@@ -37,7 +37,6 @@
 
 <!--Light Mode and Dark Mode-->
 <button onclick="darkmode()">Toggle Dark/Light Mode</button>
-
 <script>
     function darkmode() {
         var element = document.body;
@@ -47,7 +46,7 @@
 
 
 <h2>Öffnungszeiten:</h2>
-<table id="oeffnungszeiten">
+<table id="openingHours">
 	<thead>
 		<tr>
 			<th>Wochentag</th>
@@ -76,7 +75,7 @@
 
 
 <h2>Preise:</h2>
-<table id="preisliste">
+<table id="priceList">
 	<thead>
 		<tr>
 			<th>Personengruppe</th>
@@ -159,7 +158,7 @@
     var parkhausSize=0;
     parkhausSize=parseInt(parkplatzspaceCount.valueOf(),10);
     var pricePerHour=2.0;
-    var CarArray=[];
+    var carArray=[];
     var payedCarsArray=[];
     document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
     document.getElementById("anzahlParkplaetzeGesamt").innerText=""+parkhausSize+"";
@@ -183,7 +182,7 @@
     var Auto=function () {
         this.id=Math.random();
         this.date=new Date();
-        function Getid() {
+        function getId() {
             return this.id;
         }
     }
@@ -194,7 +193,7 @@
             i=i+1;
             x()
             a=new Auto();
-            CarArray.push(a);
+            carArray.push(a);
             //in anzeige Liste eintragen
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
@@ -213,8 +212,8 @@
     function listeRefresh () {
         var selectElement = document.getElementById('autosImParkhausbezahlen');
         var kkkk;
-        for(kkkk=0;kkkk<CarArray.length;kkkk++){
-            var option1 = new Option('Autoid: '+CarArray[kkkk].id);
+        for(kkkk=0;kkkk<carArray.length;kkkk++){
+            var option1 = new Option('Autoid: '+carArray[kkkk].id);
             selectElement.options[kkkk] = option1;
         }
     }
@@ -233,10 +232,10 @@
             document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";
             document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
             var kkk;
-            for (kkk = 0; kkk < CarArray.length; kkk++){
-                if (splittet[1] == CarArray[kkk].id) {
+            for (kkk = 0; kkk < carArray.length; kkk++){
+                if (splittet[1] == carArray[kkk].id) {
                     var datenow = new Date();
-                    var millisecondsSubDate = (datenow - CarArray[kkk].date);
+                    var millisecondsSubDate = (datenow - carArray[kkk].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
                     var tarif;
@@ -265,20 +264,20 @@
                         var mitarbeitertarif = 0.20;
                         priceCar = (priceCar) - (priceCar * mitarbeitertarif);
                     }
-                    b = payedCars(CarArray[kkk].id, CarArray[kkk].date, datenow, priceCar, tarif);
+                    b = payedCars(carArray[kkk].id, carArray[kkk].date, datenow, priceCar, tarif);
                     payedCarsArray.push(b);
                 } else {
-                    newHelpArray.push(CarArray[kkk]);
+                    newHelpArray.push(carArray[kkk]);
                 }
             }
             var x;
             var list = document.getElementById("autosImParkhausbezahlen");
 
-            for(x=0;x<CarArray.length;x++){
+            for(x=0;x<carArray.length;x++){
                 list.options[x]=null;
             }
 
-            CarArray=newHelpArray;
+            carArray=newHelpArray;
             listeRefresh();
         }
     }
