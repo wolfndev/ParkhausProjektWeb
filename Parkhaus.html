@@ -3,6 +3,21 @@
     <title>Parkhaus</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
+    <!--Light Mode and Dark Mode-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        
+        .darkmode {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    
 </head>
 <body>
 <script type="text/javascript">
@@ -20,6 +35,15 @@
 <br>
 <br>
 
+<!--Light Mode and Dark Mode-->
+<button onclick="darkmode()">Toggle Dark/Light Mode</button>
+
+<script>
+    function darkmode() {
+        var element = document.body;
+        element.classList.toggle("darkmode");
+    }
+</script>
 
 
 <h2>Öffnungszeiten:</h2>
@@ -49,7 +73,6 @@
 		</tr>
 	</tbody>
 </table>
-
 
 
 <h2>Preise:</h2>
@@ -91,9 +114,9 @@
 </table>
 
 
-
 <canvas id="testChart" width="400" height="400"></canvas>
 <script src="javascript/charts.js"></script>
+
 
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
 <p id="anzahlParkplaetzeGesamt"></p>
