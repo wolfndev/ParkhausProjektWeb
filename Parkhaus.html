@@ -2,19 +2,39 @@
 <head>
     <title>Parkhaus</title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 
-    <!--Light Mode and Dark Mode-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        /* Light mode */
         body {
             background-color: white;
             color: black;
         }
         
+        /* Dark mode */
         .darkmode {
             background-color: black;
             color: white;
+        }
+
+        /* Text alignments*/
+        h1 {
+            text-align: left;
+        }
+        
+        h2 {
+            text-align: left;
+        }
+
+        h3 {
+            text-align: left;
+        }
+
+        h4 {
+            text-align: left;
         }
     </style>
 </head>
@@ -125,12 +145,21 @@
 <p id="anzahlBesetztParkplaetze"></p>
 
 <button onclick="CarsInList()">Neues Auto im Parkhaus</button>
+<br>
+<br>
+
+<!--Icons-->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<i class="fas fa-car" style="font-size:25px;color:red;"></i>
+
+
 <form  id="Bezahlvorgang">
     <h1>Bezahlsystem</h1>
     <label for="Ticket-Nr.">Ticket-Nr.
         <select id="autosImParkhausbezahlen"></select>
-
     </label>
+
+
     <h3>Sondertarif?</h3>
     <input type="radio" id="keintarif" name="tarif" value="kein">
     <label for="keintarif">Kein</label>
@@ -232,6 +261,7 @@
             document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";
             document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
             var kkk;
+
             for (kkk = 0; kkk < carArray.length; kkk++){
                 if (splittet[1] == carArray[kkk].id) {
                     var datenow = new Date();
@@ -270,6 +300,7 @@
                     newHelpArray.push(carArray[kkk]);
                 }
             }
+
             var x;
             var list = document.getElementById("autosImParkhausbezahlen");
 
