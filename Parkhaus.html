@@ -4,7 +4,58 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <!--Charts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+<script type="text/javascript">
+   window.onload=function(){
+    var chart = new CanvasJS.Chart("chartContainer", {
+        title:{
+    text: "Verkaufte Tickets mit den Unterschiedlichen Tarifen"              
+    },
+        data: [//array of dataSeries              
+    { //dataSeries object
+
+    /*** Change type "column" to "bar", "area", "line" or "pie"***/
+    type: "column",
+   dataPoints: [
+   { label: "Normal Tarif", y: 0 },
+   { label: "Frauen Tarif", y: 0 },
+   { label: "Behinderten Tarif", y: 0 },                                    
+   { label: "Mitarbeiter Tarif", y: 0 },
+   { label: "Familien Tarif", y: 0 }
+   ]
+ }
+ ]
+});
+
+chart.render();
+
+
+$("#updateDataPointDiagramm").click(function () {
+chart.options.data[0].dataPoints[0].y = NoTarifnumber;
+chart.options.data[0].dataPoints[1].y = woman;
+chart.options.data[0].dataPoints[2].y = disabledPeople;
+chart.options.data[0].dataPoints[3].y = worker;
+chart.options.data[0].dataPoints[4].y = family;
+chart.render();
+
+});
+
+
+$("#enableDisableDiagramm").click(function(){
+    if(DiagrammEnable==true){
+        DiagrammEnable=false;
+        $("#chartContainer").hide();}
+    else if(DiagrammEnable==false){
+        DiagrammEnable=true;
+        $("#chartContainer").show();}
+});
+}
+
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -133,9 +184,6 @@
 </table>
 
 
-<canvas id="testChart" width="400" height="400"></canvas>
-<script src="javascript/charts.js"></script>
-
 
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
 <p id="anzahlParkplaetzeGesamt"></p>
@@ -179,16 +227,25 @@
 <button id="btnPay" onclick="pay()">Tarif bezahlen</button>
 <br>
 <br>
-
+<!--Anzeige statistik tarif-->
+<button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm anzeigen/ausblenden</button>
+<button id="updateDataPointDiagramm">Diagramm Aktualisieren</button>  
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
 <script type="text/javascript">
     var i=0;
+    var DiagrammEnable=true;
     var parkhausSize=0;
     parkhausSize=parseInt(parkplatzspaceCount.valueOf(),10);
     var pricePerHour=2.0;
     var carArray=[];
     var payedCarsArray=[];
+    var NoTarifnumber=0;
+    var family=0;
+    var woman=0;
+    var disabledPeople=0;
+    var worker=0;
     document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
     document.getElementById("anzahlParkplaetzeGesamt").innerText=""+parkhausSize+"";
     document.getElementById("anzahlBesetztParkplaetze").innerText = "" + i + "";
@@ -218,7 +275,6 @@
 
     function CarsInList() {
         if(i<parkhausSize) {
-
             i=i+1;
             x()
             a=new Auto();
@@ -253,6 +309,10 @@
         if (i == 0) {
             window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus.\nSie können noch kein Ticket bezahlen.");
         }
+        else if(document.getElementById('keintarif').checked==false&&document.getElementById('familientarif').checked==false&&document.getElementById('frauentarif').checked==false&&
+        document.getElementById('behindertentarif').checked==false&&document.getElementById('mitarbeitertarif').checked==false){
+            window.alert("Sie müssen den zu Ihnen Passenden Tarif auswählen um ihr Ticket zu bezahlen");
+        }
         else{
             i=i-1;
             var list=document.getElementById("autosImParkhausbezahlen");
@@ -268,28 +328,33 @@
                     var millisecondsSubDate = (datenow - carArray[kkk].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
-                    var tarif;
-                    document.getElementById('keintarif').checked = true;
+                    var tarif="";
+                    
 
                     if (document.getElementById('keintarif').checked) {
-                        tarif = 'keintariif';
+                        NoTarifnumber=NoTarifnumber+1;
+                        tarif = 'keintarif';
                     }
                     else if (document.getElementById('familientarif').checked) {
+                        family=family+1;
                         tarif = 'familientarif';
                         var familientarif=0.10;
                         priceCar = (priceCar) - (priceCar * familientarif);
                     }
                     else if (document.getElementById('frauentarif').checked) {
+                        woman=woman+1;
                         tarif = 'frauentarif';
                         var frauentarif = 0.05;
                         priceCar = (priceCar) - (priceCar * frauentarif);
                     }
                     else if (document.getElementById('behindertentarif').checked) {
+                        disabledPeople=disabledPeople+1;
                         tarif = 'behindertentarif';
                         var behindertentarif=0.30;
                         priceCar=(priceCar)-(priceCar*behindertentarif);
                     }
                     else if (document.getElementById('mitarbeitertarif').checked) {
+                        worker=worker+1;
                         tarif = 'mitarbeitertarif';
                         var mitarbeitertarif = 0.20;
                         priceCar = (priceCar) - (priceCar * mitarbeitertarif);
@@ -312,10 +377,8 @@
             listeRefresh();
         }
     }
+
 </script>
-
-
-
 <script>
     // Klasse für Kunden erstellen
     class Kunde{
