@@ -9,15 +9,23 @@ var CarPark = (function(){
     function init(){
     // Singleton
 
-    return {
-        // Öffentliche Methoden
-        publicMethod: function(){
-            console.log("Pulic");
-        },
-        publProp: "Public",
+    //Private Methoden und Properties
+    var carParkSpaceCount = 0;
+    var carParkName = "Parkhaus von Gruppe 23";
+    var carParkOwners = "Samel, Andreas, Cong, Niclas";
 
-        getRandomNumber: function(){
-            return 0;
+    return {
+        // Öffentliche Methoden und Properties
+        getCarParkSpaceCount: function(){
+            return carParkSpaceCount;
+        },
+        setCarParkSpaceCount: function(number){
+            if(number > 0){
+                carParkSpaceCount = number;
+            }
+        },
+        getCarParkName: function(){
+            return carParkName;
         }
     };
 

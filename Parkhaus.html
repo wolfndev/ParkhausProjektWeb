@@ -91,10 +91,14 @@ $("#enableDisableDiagramm").click(function(){
 </head>
 
 <body>
+    <script type="text/javascript" src="javascript/carpark.js"></script>
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
-    var parkplatzspaceCount = parseInt((url.replace('?anzahl=','')),10);
+        // Aufrufen einer Parkhaus-Instanz mithilfe des Singleton-Patterns
+        var carPark = CarPark.getInstance();
+        var numberOfSpaces = parseInt((url.replace('?anzahl=','')),10);
+        carPark.setCarParkSpaceCount(numberOfSpaces); 
 </script>
 
 
@@ -237,7 +241,7 @@ $("#enableDisableDiagramm").click(function(){
     var i=0;
     var DiagrammEnable=true;
     var parkhausSize=0;
-    parkhausSize=parseInt(parkplatzspaceCount.valueOf(),10);
+    parkhausSize=carPark.getCarParkSpaceCount();
     var pricePerHour=2.0;
     var carArray=[];
     var payedCarsArray=[];

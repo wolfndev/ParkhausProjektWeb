@@ -4,7 +4,7 @@
     <title>Startseite</title>
 </head>
 <body>
-<h1>Parkhaus</h1>
+<h1 id="CarParkName">Parkhaus</h1>
 <h2>Autos im Parkhaus:</h2>
 <form method="GET" action="Parkhaus.html">
     <p>
@@ -16,8 +16,12 @@
         <button type="reset">Eingabe l&oumlschen</button>
     </p>
 </form>
-
+<script type="text/javascript" src="javascript/carpark.js"></script>
 <script type="text/javascript">
+
+var carPark = CarPark.getInstance();
+document.getElementById("CarParkName").innerHTML = carPark.getCarParkName();
+
     function checkNumber(anzahl) {
         var anzahlParkplatz = anzahl;
 
@@ -25,9 +29,10 @@
             window.alert("Die Anzahl der Parkplätze im Parkhaus ist ungültig.");
         }
         else {
-            break;
+            
         }
     }
+    
 </script>
 
 </body>
