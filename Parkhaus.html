@@ -71,10 +71,10 @@
 
         $("#updateDataPointDiagramm").click(function () {
             chart.options.data[0].dataPoints[0].y = NoTarifnumber;
-            chart.options.data[0].dataPoints[1].y = woman;
-            chart.options.data[0].dataPoints[2].y = disabledPeople;
-            chart.options.data[0].dataPoints[3].y = worker;
-            chart.options.data[0].dataPoints[4].y = family;
+            chart.options.data[0].dataPoints[1].y = family;
+            chart.options.data[0].dataPoints[2].y = women;
+            chart.options.data[0].dataPoints[3].y = disabledPeople;
+            chart.options.data[0].dataPoints[4].y = worker;
             chart.render();
         });
 
@@ -206,7 +206,7 @@
 
 <!--Icons-->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<i class="fas fa-car" style="font-size:25px;color:red;"></i>
+<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>
 
 
 <form  id="Bezahlvorgang">
@@ -250,7 +250,7 @@
     var payedCarsArray=[];
     var NoTarifnumber=0;
     var family=0;
-    var woman=0;
+    var women=0;
     var disabledPeople=0;
     var worker=0;
     document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
@@ -286,7 +286,7 @@
             x()
             a=new Auto();
             carArray.push(a);
-            //in anzeige Liste eintragen
+            //In Anzeige Liste eintragen
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
@@ -314,7 +314,7 @@
         var newHelpArray = [];
 
         if (i == 0) {
-            window.alert("Es ist noch kein Auto bzw. nicht mehr im Parkhaus.\nSie können noch kein Ticket bezahlen.");
+            window.alert("Im Parkhaus sind keine Autos (mehr).\nSie können kein Ticket bezahlen.");
         }
         else if(document.getElementById('keintarif').checked==false&&document.getElementById('familientarif').checked==false&&document.getElementById('frauentarif').checked==false&&
         document.getElementById('behindertentarif').checked==false&&document.getElementById('mitarbeitertarif').checked==false){
@@ -349,7 +349,7 @@
                         priceCar = (priceCar) - (priceCar * familientarif);
                     }
                     else if (document.getElementById('frauentarif').checked) {
-                        woman=woman+1;
+                        women=women+1;
                         tarif = 'frauentarif';
                         var frauentarif = 0.05;
                         priceCar = (priceCar) - (priceCar * frauentarif);
