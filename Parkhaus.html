@@ -3,60 +3,11 @@
     <title>Parkhaus</title>
     <link rel="stylesheet" href="css/styles.css">
 
-    <!--Charts-->
-<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-<script type="text/javascript">
-   window.onload=function(){
-    var chart = new CanvasJS.Chart("chartContainer", {
-        title:{
-    text: "Verkaufte Tickets mit den Unterschiedlichen Tarifen"              
-    },
-        data: [//array of dataSeries              
-    { //dataSeries object
+    <!--Scripts-->
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-    /*** Change type "column" to "bar", "area", "line" or "pie"***/
-    type: "column",
-   dataPoints: [
-   { label: "Normal Tarif", y: 0 },
-   { label: "Frauen Tarif", y: 0 },
-   { label: "Behinderten Tarif", y: 0 },                                    
-   { label: "Mitarbeiter Tarif", y: 0 },
-   { label: "Familien Tarif", y: 0 }
-   ]
- }
- ]
-});
-
-chart.render();
-
-
-$("#updateDataPointDiagramm").click(function () {
-chart.options.data[0].dataPoints[0].y = NoTarifnumber;
-chart.options.data[0].dataPoints[1].y = woman;
-chart.options.data[0].dataPoints[2].y = disabledPeople;
-chart.options.data[0].dataPoints[3].y = worker;
-chart.options.data[0].dataPoints[4].y = family;
-chart.render();
-
-});
-
-
-$("#enableDisableDiagramm").click(function(){
-    if(DiagrammEnable==true){
-        DiagrammEnable=false;
-        $("#chartContainer").hide();}
-    else if(DiagrammEnable==false){
-        DiagrammEnable=true;
-        $("#chartContainer").show();}
-});
-}
-
-</script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-
+    <!--Basic settings-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         /* Light mode */
@@ -88,7 +39,55 @@ $("#enableDisableDiagramm").click(function(){
             text-align: left;
         }
     </style>
+
+    <!--Charts-->
+    <script type="text/javascript">
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+                text: "Verkaufte Tickets mit den unterschiedlichen Tarifen"
+            },
+            data: [//array of dataSeries              
+                { //dataSeries object
+
+                    /*** Change type "column" to "bar", "area", "line" or "pie"***/
+                    type: "column",
+                    dataPoints: [
+                        { label: "Normaler Tarif", y: 0 },
+                        { label: "Familientarif", y: 0 },
+                        { label: "Frauentarif", y: 0 },
+                        { label: "Schwerbehindertentarif", y: 0 },
+                        { label: "Mitarbeiter-Tarif", y: 0 }
+                    ]
+                }
+            ]
+        });
+        chart.render();
+
+        $("#updateDataPointDiagramm").click(function () {
+            chart.options.data[0].dataPoints[0].y = NoTarifnumber;
+            chart.options.data[0].dataPoints[1].y = woman;
+            chart.options.data[0].dataPoints[2].y = disabledPeople;
+            chart.options.data[0].dataPoints[3].y = worker;
+            chart.options.data[0].dataPoints[4].y = family;
+            chart.render();
+        });
+
+        $("#enableDisableDiagramm").click(function () {
+            if (DiagrammEnable == true) {
+                DiagrammEnable = false;
+                $("#chartContainer").hide();
+            }
+            else if (DiagrammEnable == false) {
+                DiagrammEnable = true;
+                $("#chartContainer").show();
+            }
+        });
+    }
+    </script>
 </head>
+
+
 
 <body>
     <script type="text/javascript" src="javascript/carpark.js"></script>
@@ -111,7 +110,7 @@ $("#enableDisableDiagramm").click(function(){
 <br>
 
 <!--Light Mode and Dark Mode-->
-<button onclick="darkmode()">Toggle Dark/Light Mode</button>
+<button onclick="darkmode()">Dunkler/Heller Modus</button>
 <script>
     function darkmode() {
         var element = document.body;
@@ -153,7 +152,7 @@ $("#enableDisableDiagramm").click(function(){
 <table id="priceList">
 	<thead>
 		<tr>
-			<th>Personengruppe</th>
+			<th>Tarifgruppe</th>
 			<th>Preis in Euro [€]</th>
             <th>Vergünstigung in Prozent [%]</th>
         </tr>
@@ -227,13 +226,12 @@ $("#enableDisableDiagramm").click(function(){
     <br>
     <button type="reset">Ausgew&aumlhlter Tarif widerrufen</button>
 </form>
-
 <button id="btnPay" onclick="pay()">Tarif bezahlen</button>
 <br>
 <br>
 <!--Anzeige statistik tarif-->
 <button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm anzeigen/ausblenden</button>
-<button id="updateDataPointDiagramm">Diagramm Aktualisieren</button>  
+<button id="updateDataPointDiagramm">Diagramm aktualisieren</button>  
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
@@ -381,8 +379,9 @@ $("#enableDisableDiagramm").click(function(){
             listeRefresh();
         }
     }
-
 </script>
+
+
 <script>
     // Klasse für Kunden erstellen
     class Kunde{
