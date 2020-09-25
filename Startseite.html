@@ -1,14 +1,49 @@
 ﻿<html>
 <head>
-    <meta charset="UTF-8">
     <title>Startseite</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Basic settings-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Text alignments*/
+        h1 {
+            text-align: left;
+            color: red;
+        }
+
+        h2 {
+            text-align: left;
+            color: green;
+        }
+
+        h3 {
+            text-align: left;
+            color: darkcyan;
+        }
+
+        h4 {
+            text-align: left;
+            color: cyan;
+        }
+    </style>
 </head>
+
+
+
 <body>
 <h1 id="CarParkName">Parkhaus</h1>
+ <h2>Aktuelle Uhrzeit:</h2>
+<div id="digitalclock" class="clock">Clock</div>
+<script src="javascript/digitalclock.js"></script>
+<br>
+<br>
+
 <h2>Autos im Parkhaus:</h2>
 <form method="GET" action="Parkhaus.html">
     <p>
-        <label for="anzahl">Anzahl Parklpl&aumltze angeben:</label>
+        <label for="anzahl">Anzahl Parkpl&aumltze angeben:</label>
         <input type="Number" name="anzahl" id="anzahl" size="25">
     </p>
     <p>
@@ -28,11 +63,7 @@ document.getElementById("CarParkName").innerHTML = carPark.getCarParkName();
         if (anzahlParkplatz <= 0) {
             window.alert("Die Anzahl der Parkplätze im Parkhaus ist ungültig.");
         }
-        else {
-            
-        }
     }
-    
 </script>
 
 </body>
