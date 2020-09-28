@@ -58,6 +58,7 @@
                     /*** Change type "column" to "bar", "area", "line" or "pie"***/
                     type: "column",
                     dataPoints: [
+                        { label: "Anzahl Kunden gesamt", y:0},
                         { label: "Normaler Tarif", y: 0 },
                         { label: "Familientarif", y: 0 },
                         { label: "Frauentarif", y: 0 },
@@ -70,11 +71,12 @@
         chart.render();
 
         $("#updateDataPointDiagramm").click(function () {
-            chart.options.data[0].dataPoints[0].y = NoTarifnumber;
-            chart.options.data[0].dataPoints[1].y = family;
-            chart.options.data[0].dataPoints[2].y = women;
-            chart.options.data[0].dataPoints[3].y = disabledPeople;
-            chart.options.data[0].dataPoints[4].y = worker;
+            chart.options.data[0].dataPoints[0].y = SumCars;
+            chart.options.data[0].dataPoints[1].y = NoTarifnumber;
+            chart.options.data[0].dataPoints[2].y = family;
+            chart.options.data[0].dataPoints[3].y = women;
+            chart.options.data[0].dataPoints[4].y = disabledPeople;
+            chart.options.data[0].dataPoints[5].y = worker;
             chart.render();
         });
 
@@ -248,6 +250,7 @@
     var pricePerHour=2.0;
     var carArray=[];
     var payedCarsArray=[];
+    var SumCars=0;
     var NoTarifnumber=0;
     var family=0;
     var women=0;
@@ -336,7 +339,7 @@
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
                     var tarif="";
-                    
+                    SumCars=SumCars+1;
 
                     if (document.getElementById('keintarif').checked) {
                         NoTarifnumber=NoTarifnumber+1;
