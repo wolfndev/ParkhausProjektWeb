@@ -101,7 +101,7 @@
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
-        // Aufrufen einer Parkhaus-Instanz mithilfe des Singleton-Patterns
+        // Call of Parkhouse-Instance with the help of the Singleton-Pattern
         var carPark = CarPark.getInstance();
         var numberOfSpaces = parseInt((url.replace('?anzahl=','')),10);
         carPark.setCarParkSpaceCount(numberOfSpaces); 
@@ -233,16 +233,39 @@
     <br>
     <button type="reset">Ausgew&aumlhlter Tarif widerrufen</button>
 </form>
-<button id="btnPay" onclick="pay()">Tarif bezahlen</button>
+<button id="btnPay">Tarif bezahlen</button>
 <br>
 <br>
-<!--Anzeige statistik tarif-->
+<!--Show of Statistik tarif-->
 <button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm anzeigen/ausblenden</button>
 <button id="updateDataPointDiagramm">Diagramm aktualisieren</button>  
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
-
+<script type="text/javascript" src="javascript/observer.js"></script>
 <script type="text/javascript">
+    
+
+var subject = document.getElementById("btnPay");
+ 
+ extend(subject, new Subject());
+ subject.onclick = function(){
+     subject.notify(subject.click);
+ };
+
+ var check = document.getElementById("updateDataPointDiagramm");
+ check.type = "button";
+ extend(check, new Observer());
+ check.update = function(value){
+     pay();
+     this.click();
+     
+ } 
+
+ subject.addObserver(check);
+
+
+
+
     var i=0;
     var DiagrammEnable=true;
     var parkhausSize=0;
@@ -289,7 +312,7 @@
             x()
             a=new Auto();
             carArray.push(a);
-            //In Anzeige Liste eintragen
+            //In Display enter liste
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
@@ -374,6 +397,8 @@
                 } else {
                     newHelpArray.push(carArray[kkk]);
                 }
+
+
             }
 
             var x;
@@ -390,90 +415,7 @@
 </script>
 
 
-<script>
-    // Klasse für Kunden erstellen
-    class Kunde{
-        constructor(id, name) {
-            this.id = id;
-            this.name = name;
-        }
 
-        get name() {
-            return this.name;
-        }
-    }
-
-    // Klasse für Familie
-    class Famile extends Kunde{
-        constructor(id, name, anzahlPersonen) {
-            super(id, name);
-            this.anzahlPersonen = anzahlPersonen;
-        }
-    }
-
-    // Klasse für Mitarbeiter des Parkhauses
-    class Mitarbeiter{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            this.id = id;
-            this.name = name;
-            this.gehalt = gehalt;
-            this.arbeitsbezeichnung = arbeitsbezeichnung;
-        }
-
-        get name() {
-            return this.name;
-        }
-
-        get gehalt() {
-            return this.gehalt;
-        }
-
-        get arbeitsbezeichnung() {
-            return this.arbeitsbezeichnung;
-        }
-    }
-
-    // Klasse der Manager
-    class Manager extends Mitarbeiter{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            super(id, name, gehalt, arbeitsbezeichnung);
-        }
-    }
-
-    // Klasse der Parkhausbetreiber
-    class Parkhausbetreiber extends Mitarbeiter{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            super(id, name, gehalt, arbeitsbezeichnung);
-        }
-    }
-
-    // Klasse der Schrankenwärter
-    class Schrankenwärter extends Mitarbeiter{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            super(id, name, gehalt, arbeitsbezeichnung);
-        }
-    }
-
-    // Klasse der Einweiser
-    class Einweiser extends Mitarbeiter{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            super(id, name, gehalt, arbeitsbezeichnung);
-        }
-    }
-
-    // Klasse der Investoren
-    class Investor extends Kunde{
-        constructor(id, name, gehalt, arbeitsbezeichnung) {
-            super(id, name, gehalt, arbeitsbezeichnung);
-        }
-    }
-
-    // Funktion, um ein Objekt in JSON-Format zu überführen
-    function createJSON(Cars) {
-        var string = JSON.stringify(Cars);
-        console.log(string);
-    }
-</script>
 
 </body>
 </html>
