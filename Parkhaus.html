@@ -208,8 +208,8 @@
 
 <!--Icons-->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>
-
+<!--<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>-->
+<div id="carContainer"></div>
 
 <form  id="Bezahlvorgang">
     <h1>Bezahlsystem</h1>
@@ -252,16 +252,22 @@ var subject = document.getElementById("btnPay");
      subject.notify(subject.click);
  };
 
+ var container = document.getElementById("carContainer");
+ extend(container,new Observer());
+ container.update = function(value){
+    
+ }
+
  var check = document.getElementById("updateDataPointDiagramm");
  check.type = "button";
  extend(check, new Observer());
  check.update = function(value){
      pay();
      this.click();
-     
  } 
 
  subject.addObserver(check);
+ subject.addObserver(container);
 
 
 
@@ -373,6 +379,7 @@ var subject = document.getElementById("btnPay");
                         tarif = 'familientarif';
                         var familientarif=0.10;
                         priceCar = (priceCar) - (priceCar * familientarif);
+                        
                     }
                     else if (document.getElementById('frauentarif').checked) {
                         women=women+1;
