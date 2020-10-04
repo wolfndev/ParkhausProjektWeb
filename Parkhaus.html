@@ -66,9 +66,9 @@
 <script type="text/javascript">
     if (window.location.search != '')
         var url = window.location.search;
-        // Call of Parkhouse-Instance with the help of the Singleton-Pattern
+        // Call of instance car park with the help of the Singleton-Pattern
         var carPark = CarPark.getInstance();
-        var numberOfSpaces = parseInt((url.replace('?anzahl=','')),10);
+        var numberOfSpaces = parseInt((url.replace('?amount=','')),10);
         carPark.setCarParkSpaceCount(numberOfSpaces); 
 </script>
 
@@ -161,11 +161,11 @@
 
 
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
-<p id="anzahlParkplaetzeGesamt"></p>
+<p id="amountParkingspace"></p>
 <h4>Anzahl Freier Parkpl&aumltze:</h4>
-<p id="anzahlFreieParkplaetze"></p>
+<p id="amountParkingspaceFree"></p>
 <h4>Anzahl Besetzter Parkpl&aumltzen:</h4>
-<p id="anzahlBesetztParkplaetze"></p>
+<p id="amountParkingspaceOccupied"></p>
 
 <button onclick="CarsInList()">Neues Auto im Parkhaus</button>
 <br>
@@ -176,33 +176,34 @@
 <!--<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>-->
 <div id="carContainer"></div>
 
-<form  id="Bezahlvorgang">
+<form id="Payment">
     <h1>Bezahlsystem</h1>
-    <label for="Ticket-Nr.">Ticket-Nr.
+    <label for="ticketNumber">Ticket-Nr.
         <select id="autosImParkhausbezahlen"></select>
     </label>
 
 
     <h3>Sondertarif?</h3>
-    <input type="radio" id="keintarif" name="tarif" value="kein">
-    <label for="keintarif">Kein</label>
-    <input type="radio" id="familientarif" name="tarif" value="familie">
-    <label for="familientarif">Familie</label>
-    <input type="radio" id="frauentarif" name="tarif" value="frau">
-    <label for="frauentarif">Frau</label>
-    <input type="radio" id="behindertentarif" name="tarif" value="behindert">
-    <label for="behindertentarif">Person mit Behinderung</label>
-    <input type="radio" id="mitarbeitertarif" name="tarif" value="mitarbeiter">
-    <label for="mitarbeitertarif">Mitarbeiter</label>
+    <input type="radio" id="noRate" name="tariff" value="kein">
+    <label for="noRate">Kein</label>
+    <input type="radio" id="rateFamily" name="tariff" value="familie">
+    <label for="rateFamily">Familie</label>
+    <input type="radio" id="rateWoman" name="tariff" value="frau">
+    <label for="rateWoman">Frau</label>
+    <input type="radio" id="rateDisabledPeople" name="tariff" value="behindert">
+    <label for="rateDisabledPeople">Person mit Behinderung</label>
+    <input type="radio" id="rateWorker" name="tariff" value="mitarbeiter">
+    <label for="rateWorker">Mitarbeiter</label>
     <br>
     <br>
     <button type="reset">Ausgew&aumlhlter Tarif widerrufen</button>
 </form>
+
 <button id="btnPay">Tarif bezahlen</button>
 <br>
 <br>
-<!--Show of Statistik tarif-->
-<button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm anzeigen/ausblenden</button>
+<!--Show of statistics rates-->
+<button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm ausblenden/anzeigen</button>
 <button id="updateDataPointDiagramm">Diagramm aktualisieren</button>  
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
@@ -239,8 +240,8 @@ var subject = document.getElementById("btnPay");
 
     var i=0;
     var DiagrammEnable=true;
-    var parkhausSize=0;
-    parkhausSize=carPark.getCarParkSpaceCount();
+    var carparksize=0;
+    carparksize=carPark.getCarParkSpaceCount();
     var pricePerHour=2.0;
     var carArray=[];
     var payedCarsArray=[];
@@ -250,23 +251,23 @@ var subject = document.getElementById("btnPay");
     var women=0;
     var disabledPeople=0;
     var worker=0;
-    document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
-    document.getElementById("anzahlParkplaetzeGesamt").innerText=""+parkhausSize+"";
-    document.getElementById("anzahlBesetztParkplaetze").innerText = "" + i + "";
+    document.getElementById("amountParkingspaceFree").innerText=""+carparksize-i+"";
+    document.getElementById("amountParkingspace").innerText=""+carparksize+"";
+    document.getElementById("amountParkingspaceOccupied").innerText = "" + i + "";
 
     function x() {
-        if (parkhausSize > 0) {
-            document.getElementById("anzahlFreieParkplaetze").innerText = "" + parkhausSize - i + "";
-            document.getElementById("anzahlBesetztParkplaetze").innerText = "" + i + "";
+        if (carparksize > 0) {
+            document.getElementById("amountParkingspaceFree").innerText = "" + carparksize - i + "";
+            document.getElementById("amountParkingspaceOccupied").innerText = "" + i + "";
         }
     }
 
     var payedCars=function (idd,datee,datenow,pricee,tariff) {
         this.id=idd;
         this.date=datee;
-        this.leftParkhouse=datenow;
+        this.leftCarpark=datenow;
         this.price=pricee;
-        this.tarif=tariff;
+        this.tariff=tariff;
     }
 
     var Auto=function () {
@@ -278,12 +279,12 @@ var subject = document.getElementById("btnPay");
     }
 
     function CarsInList() {
-        if(i<parkhausSize) {
+        if(i<carparksize) {
             i=i+1;
             x()
             a=new Auto();
             carArray.push(a);
-            //In Display enter liste
+            // in Display enter list
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
@@ -298,12 +299,12 @@ var subject = document.getElementById("btnPay");
         }
     }
 
-    function listeRefresh () {
+    function refreshList () {
         var selectElement = document.getElementById('autosImParkhausbezahlen');
-        var kkkk;
-        for(kkkk=0;kkkk<carArray.length;kkkk++){
-            var option1 = new Option('Autoid: '+carArray[kkkk].id);
-            selectElement.options[kkkk] = option1;
+        var tmp;
+        for (tmp = 0; tmp < carArray.length; tmp++){
+            var option1 = new Option('Autoid: ' + carArray[tmp].id);
+            selectElement.options[tmp] = option1;
         }
     }
 
@@ -313,61 +314,61 @@ var subject = document.getElementById("btnPay");
         if (i == 0) {
             window.alert("Im Parkhaus sind keine Autos (mehr).\nSie können kein Ticket bezahlen.");
         }
-        else if(document.getElementById('keintarif').checked==false&&document.getElementById('familientarif').checked==false&&document.getElementById('frauentarif').checked==false&&
-        document.getElementById('behindertentarif').checked==false&&document.getElementById('mitarbeitertarif').checked==false){
-            window.alert("Sie müssen den zu Ihnen Passenden Tarif auswählen um ihr Ticket zu bezahlen");
+        else if(document.getElementById('noRate').checked==false&&document.getElementById('rateFamily').checked==false&&document.getElementById('rateWoman').checked==false&&
+        document.getElementById('rateDisabledPeople').checked==false&&document.getElementById('rateWorker').checked==false){
+            window.alert("Sie müssen den zu Ihnen passenden Tarif auswählen, um Ihr Ticket zu bezahlen");
         }
         else{
             i=i-1;
             var list=document.getElementById("autosImParkhausbezahlen");
             var strUser = list.options[list.selectedIndex].value;
             var splittet=strUser.split(": ");
-            document.getElementById("anzahlBesetztParkplaetze").innerText=""+i+"";
-            document.getElementById("anzahlFreieParkplaetze").innerText=""+parkhausSize-i+"";
-            var kkk;
+            document.getElementById("amountParkingspaceOccupied").innerText=""+i+"";
+            document.getElementById("amountParkingspaceFree").innerText=""+carparksize-i+"";
+            var temp;
 
-            for (kkk = 0; kkk < carArray.length; kkk++){
-                if (splittet[1] == carArray[kkk].id) {
+            for (temp = 0; temp < carArray.length; temp++){
+                if (splittet[1] == carArray[temp].id) {
                     var datenow = new Date();
-                    var millisecondsSubDate = (datenow - carArray[kkk].date);
+                    var millisecondsSubDate = (datenow - carArray[temp].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
-                    var tarif="";
+                    var tariff="";
                     SumCars=SumCars+1;
 
-                    if (document.getElementById('keintarif').checked) {
+                    if (document.getElementById('noRate').checked) {
                         NoTarifnumber=NoTarifnumber+1;
-                        tarif = 'keintarif';
+                        tariff = 'noRate';
                     }
-                    else if (document.getElementById('familientarif').checked) {
+                    else if (document.getElementById('rateFamily').checked) {
                         family=family+1;
-                        tarif = 'familientarif';
-                        var familientarif=0.10;
-                        priceCar = (priceCar) - (priceCar * familientarif);
+                        tariff = 'rateFamily';
+                        var rateFamily=0.10;
+                        priceCar = (priceCar) - (priceCar * rateFamily);
                         
                     }
-                    else if (document.getElementById('frauentarif').checked) {
+                    else if (document.getElementById('rateWoman').checked) {
                         women=women+1;
-                        tarif = 'frauentarif';
-                        var frauentarif = 0.05;
-                        priceCar = (priceCar) - (priceCar * frauentarif);
+                        tariff = 'rateWoman';
+                        var rateWoman = 0.05;
+                        priceCar = (priceCar) - (priceCar * rateWoman);
                     }
-                    else if (document.getElementById('behindertentarif').checked) {
+                    else if (document.getElementById('rateDisabledPeople').checked) {
                         disabledPeople=disabledPeople+1;
-                        tarif = 'behindertentarif';
-                        var behindertentarif=0.30;
-                        priceCar=(priceCar)-(priceCar*behindertentarif);
+                        tariff = 'rateDisabledPeople';
+                        var rateDisabledPeople=0.30;
+                        priceCar=(priceCar)-(priceCar*rateDisabledPeople);
                     }
-                    else if (document.getElementById('mitarbeitertarif').checked) {
+                    else if (document.getElementById('rateWorker').checked) {
                         worker=worker+1;
-                        tarif = 'mitarbeitertarif';
-                        var mitarbeitertarif = 0.20;
-                        priceCar = (priceCar) - (priceCar * mitarbeitertarif);
+                        tariff = 'rateWorker';
+                        var rateWorker = 0.20;
+                        priceCar = (priceCar) - (priceCar * rateWorker);
                     }
-                    b = payedCars(carArray[kkk].id, carArray[kkk].date, datenow, priceCar, tarif);
+                    b = payedCars(carArray[temp].id, carArray[temp].date, datenow, priceCar, tariff);
                     payedCarsArray.push(b);
                 } else {
-                    newHelpArray.push(carArray[kkk]);
+                    newHelpArray.push(carArray[temp]);
                 }
 
 
@@ -381,11 +382,10 @@ var subject = document.getElementById("btnPay");
             }
 
             carArray=newHelpArray;
-            listeRefresh();
+            refreshList();
         }
     }
 </script>
-
 
 
 

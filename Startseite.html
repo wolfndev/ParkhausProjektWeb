@@ -12,7 +12,7 @@
 
 <body>
 <h1 id="CarParkName">Parkhaus</h1>
- <h2>Aktuelle Uhrzeit:</h2>
+<h2>Aktuelle Uhrzeit:</h2>
 <div id="digitalclock" class="clock">Clock</div>
 <script src="javascript/digitalclock.js"></script>
 <br>
@@ -21,11 +21,11 @@
 <h2>Autos im Parkhaus:</h2>
 <form method="GET" action="Parkhaus.html">
     <p>
-        <label for="anzahl">Anzahl Parkpl&aumltze angeben:</label>
-        <input type="Number" name="anzahl" id="anzahl" size="25">
+        <label for="amount">Anzahl Parkpl&aumltze angeben:</label>
+        <input id="amount" type="Number" name="amount" size="25">
     </p>
     <p>
-        <button type="submit">&Uumlbergeben</button>
+        <button type="submit" onclick="checkNumber()">&Uumlbergeben</button>
         <button type="reset">Eingabe l&oumlschen</button>
     </p>
 </form>
@@ -35,11 +35,17 @@
 var carPark = CarPark.getInstance();
 document.getElementById("CarParkName").innerHTML = carPark.getCarParkName();
 
-    function checkNumber(anzahl) {
-        var anzahlParkplatz = anzahl;
+    /* Checks value of the input field if it is "Not a Number" (NaN) or "less then 1" */
+    function checkNumber() {
+        var carsInCarpark, text;
 
-        if (anzahlParkplatz <= 0) {
-            window.alert("Die Anzahl der Parkplätze im Parkhaus ist ungültig.");
+        // Get the value of the input field with the id="amount" in variable "carsInCarpark"
+        carsInCarpark = document.getElementById("amount").value;
+
+        // If the variable "carsInCarpark" is: Not a Number (NaN) or less then 1
+        if (isNaN(carsInCarpark) || carsInCarpark < 1) {
+            text = "Die Anzahl der Parkplätze im Parkhaus ist ungültig.";
+            window.alert(text);
         }
     }
 </script>
