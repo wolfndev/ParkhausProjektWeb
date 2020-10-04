@@ -1,14 +1,39 @@
-
+/* Text alignments*/
 h1 {
-    color: blue;
-    font-family: verdana;
-    font-size: 300%;
-  }
+	text-align: left;
+	color: red;
+}
 
-  .clock {
+h2 {
+	text-align: left;
+	color: green;
+        }
+		
+h3 {
+	text-align: left;
+	color: darkcyan;
+}
 
-    font-size: 40px;
+h4 {
+	text-align: left;
+	color: cyan;
+}
+
+/* Light mode */
+body {
+	background-color: white;
+	color: black;
+}
+
+/* Dark mode */
+.darkmode {
+	background-color: black;
+	color: white;
+}
+
+/* Digital clock */
+.clock {
+	font-size: 40px;
     font-family: Orbitron;
     letter-spacing: 3px;
-
-  }
+}
