@@ -68,7 +68,7 @@
         var url = window.location.search;
         // Call of instance car park with the help of the Singleton-Pattern
         var carPark = CarPark.getInstance();
-        var numberOfSpaces = parseInt((url.replace('?amount=','')),10);
+        var numberOfSpaces = parseInt((url.replace('?number=','')),10);
         carPark.setCarParkSpaceCount(numberOfSpaces); 
 </script>
 
@@ -173,11 +173,11 @@
 <br>
 
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
-<p id="amountParkingspace"></p>
+<p id="numberParkingspace"></p>
 <h4>Anzahl Freier Parkpl&aumltze:</h4>
-<p id="amountParkingspaceFree"></p>
+<p id="numberParkingspaceFree"></p>
 <h4>Anzahl Besetzter Parkpl&aumltze:</h4>
-<p id="amountParkingspaceOccupied"></p>
+<p id="numberParkingspaceOccupied"></p>
 
 <button onclick="CarsInList()">Neues Auto im Parkhaus</button>
 <button onclick="window.location = 'Uebersicht.html'">Finanz-&Uuml;bersicht</button>
@@ -265,14 +265,14 @@ var subject = document.getElementById("btnPay");
     var women=0;
     var disabledPeople=0;
     var worker=0;
-    document.getElementById("amountParkingspaceFree").innerText=""+carparksize-i+"";
-    document.getElementById("amountParkingspace").innerText=""+carparksize+"";
-    document.getElementById("amountParkingspaceOccupied").innerText = "" + i + "";
+    document.getElementById("numberParkingspaceFree").innerText=""+carparksize-i+"";
+    document.getElementById("numberParkingspace").innerText=""+carparksize+"";
+    document.getElementById("numberParkingspaceOccupied").innerText = "" + i + "";
 
     function x() {
         if (carparksize > 0) {
-            document.getElementById("amountParkingspaceFree").innerText = "" + carparksize - i + "";
-            document.getElementById("amountParkingspaceOccupied").innerText = "" + i + "";
+            document.getElementById("numberParkingspaceFree").innerText = "" + carparksize - i + "";
+            document.getElementById("numberParkingspaceOccupied").innerText = "" + i + "";
         }
     }
 
@@ -335,8 +335,8 @@ var subject = document.getElementById("btnPay");
             var list=document.getElementById("autosImParkhausbezahlen");
             var strUser = list.options[list.selectedIndex].value;
             var splittet=strUser.split(": ");
-            document.getElementById("amountParkingspaceOccupied").innerText=""+i+"";
-            document.getElementById("amountParkingspaceFree").innerText=""+carparksize-i+"";
+            document.getElementById("numberParkingspaceOccupied").innerText=""+i+"";
+            document.getElementById("numberParkingspaceFree").innerText=""+carparksize-i+"";
             var temp;
 
             for (temp = 0; temp < carArray.length; temp++){

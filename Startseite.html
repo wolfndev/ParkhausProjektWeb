@@ -19,8 +19,8 @@
 <h2>Autos im Parkhaus:</h2>
 <form method="GET" action="Parkhaus.html">
     <p>
-        <label for="amount">Anzahl Parkpl&aumltze angeben:</label>
-        <input id="amount" type="Number" name="amount" size="25">
+        <label for="number">Anzahl Parkpl&aumltze angeben:</label>
+        <input id="number" type="Number" name="number" size="25">
     </p>
     <p>
         <button type="submit" onclick="checkNumber()">&Uumlbergeben</button>
@@ -37,8 +37,8 @@ document.getElementById("CarParkName").innerHTML = carPark.getCarParkName();
     function checkNumber() {
         var carsInCarpark, text;
 
-        // Get the value of the input field with the id="amount" in variable "carsInCarpark"
-        carsInCarpark = document.getElementById("amount").value;
+        // Get the value of the input field with the id="number" in variable "carsInCarpark"
+        carsInCarpark = document.getElementById("number").value;
 
         // If the variable "carsInCarpark" is: Not a Number (NaN) or less then 1
         if (isNaN(carsInCarpark) || carsInCarpark < 1) {
