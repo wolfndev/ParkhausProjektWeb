@@ -1,16 +1,17 @@
-# ParkhausProjektWeb
+# Semesterprojekt Team 23
 
-# Inhaltsverzeichnis
+## Inhaltsverzeichnis
 1. [Einführung](#introduction)
-2. [COVID-19](#covid19)
+2. [COVID-19 Pandemie](#covid19)
 3. [Ordnerstruktur](#directory)
 4. [Digitales Projekt](#digitalProject)
     1. [Zielgruppen](#groups)
+    2. [Funktionalität](#functionality)
 5. [Ziele](#goals)
 6. [Fazit](#conclusion)
 7. [Links](#url)
 
-## Einführung <a name="introduction"></a>
+### 1. Einführung <a name="introduction"></a>
 Das Team 23 heißt Sie Herzlich Willkommen zum Semesterprojekt.
 <br>Das Semesterprojekt dient zur Abgabe für die Hausarbeit in dem Modul "Software Engineering I" im Team 23 bei
 <br>Herrn Prof. Dr. Manfred Kaul im Sommersemester 2020 (SoSe 2020) an der Hochschule Bonn-Rhein-Sieg (H-BRS).
@@ -32,16 +33,16 @@ Abgabetermin: 08.10.2020 23:55 Uhr.
 
 Die Autoren des Semesterprojekts **Team 23** sind in den Dateien genannt.
 
-## COVID-19 Pandemie <a name="covid19"></a>
-Aufgrund der momentanen COVID-19 Pandemie (Corona-Virus) wurden an dieser Hochschule Maßnahmen getroffen,
-<br>welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
-<br>die Corona-Epidemie-Hochschulverordnung des Landes-Nordrhein-Westfalen beinhalten.
+### 2. COVID-19 Pandemie <a name="covid19"></a>
+Aufgrund der momentanen Lage einer COVID-19 Pandemie mit dem neuen Corona-Virus SARS-CoV-2 wurden an dieser Hochschule
+<br>Maßnahmen getroffen, welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
+<br>die Corona-Epidemie-Hochschulverordnung des Landes Nordrhein-Westfalen (NRW) beinhalten.
 
 Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pandemie der H-BRS finden Sie unter:
 <br>https://www.h-brs.de/de/corona
 <br><br>(*Autor: Team 23*)
 
-## Ordnerstruktur <a name="directory"></a>
+### 3. Ordnerstruktur <a name="directory"></a>
 1. .vs: JSON- und Konfigurationsdateien sind in diesem Verzeichnis.
 2. css: Alle wichtigen standardmäßigen Stylesheets (CSS) aller Seiten (.html) findet man in diesem Ordner.
 3. javascript: Ein Ordner aller benötigten Java-Scripts für die Simulation des Parkhauses.
@@ -54,7 +55,7 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 8. Uebersicht.html: Übersicht für die Finanzen des simulierten Parkhauses.
 <br><br>(*Autor: Team 23*)
 
-## Digitales Projekt <a name="digitalProject"></a>
+### 4. Digitales Projekt <a name="digitalProject"></a>
 Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt digital virtuell umgesetzt werden.
 <br>Das Projekt erforderte sogenannte "User Stories", welche als ein wichtiger Teil für den Beginn der Erstellung einer Software ist.
 <br>D.h. die Abläufe vom vorhandenen analogen realen Parkhaus soll durch Simulation realisiert bzw. digitalisiert werden.
@@ -63,7 +64,7 @@ Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt 
 <br>Lage des Parkhauses im Weltkoordinatensystem (z.B.: 50° 46' 49.04" N 7° 10' 54.401" E bzw. 50.780289, 7.181778), etc. .
 <br>Die Webseiten sollen so gut wie möglich eine grobe Übersicht für die Simulationen eines Parkhauses darstellen.
 
-### Zielgruppen <a name="groups"></a>
+#### 4.1 Zielgruppen <a name="groups"></a>
 Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und Personengruppen:
 <br>• Kunden/Kundinnen
 <br>• Familien
@@ -75,9 +76,15 @@ Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und 
 <br>• das Finanzamt
 <br>• Statistiker
 <br>• und hier auch: Parkhaus-Simulierende
+
+#### 4.2 Funktionalität <a name="functionality"></a>
+Das Semesterprojekt beinhaltet Webseiten mit den Dateiendungen ".html", welche folgende Funktionalitäten inbegriffen sind:
+<br>1. Startseite.html: Benutzereingabe für die Anzahl der zuerstellenden virtuellen Parkplätze im Parkhaus wird benötigt
+<br>2. Parkhaus.html: Parkhaussimulation (PKW ein- und ausfahren), Ticket bezahlen, eine Statistik anfordern
+<br>3. Uebersicht.html: Finanzielle Übersicht von Einnahmen und Ausgaben des Parkhauses
 <br><br>(*Autor: Team 23*)
 
-## Ziele <a name="goals"></a>
+### 5. Ziele <a name="goals"></a>
 **Frage: Welche Ziele hatten Sie bevor Sie das Projekt entwickelten?**
 <br>Die Ziele wurden allesamt unter unseren User Stories in der von Herrn Prof. Dr. Manfred Kaul entwickelten App veröffentlicht:
 <br>https://kaul.inf.h-brs.de/se
@@ -96,7 +103,7 @@ Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und 
 <br>Wir präferierten uns letztendlich auf notwendige Funktionalitäten für die Simulation eines virtuellen Parkhauses.
 <br><br>(*Autor: Team 23*)
 
-## Fazit <a name="conclusion"></a>
+### 6. Fazit <a name="conclusion"></a>
 Zusammenfassend können wir gemeinsam als Team sagen, dass das Projekt trotz einiger fehlenden Umsetzung für die Notwendigkeit
 <br>einer virtuellen Simulation eines Parkhauses uns sehr viel lehrte, wie wichtig es ist im beruflichen Leben, aber auch
 <br>schon jetzt als Team zu agieren und die Projekte umzusetzen.
@@ -112,8 +119,9 @@ Zusammenfassend können wir gemeinsam als Team sagen, dass das Projekt trotz ein
 <br>• User Stories, Story und Value Points sind relevant für den späteren Verlauf eines Sprints, um den Projektverlauf zu prognostizieren
 <br><br>(*Autor: Team 23*)
 
-## Links <a name="url"></a>
-• https://kaul.inf.h-brs.de/se
+### 7. Links <a name="url"></a>
+Folgende Links/URLs wurden für diese Readme-Datei verwendet:
+<br>• https://kaul.inf.h-brs.de/se
 <br>• https://kaul.inf.h-brs.de/se/#app-content-0-2
 <br>• https://www.h-brs.de/de/corona
 <br>• Herr Prof. Dr. Manfred Kaul: https://www.h-brs.de/de/inf/prof-dr-manfred-kaul
