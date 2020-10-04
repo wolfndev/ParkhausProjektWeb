@@ -28,19 +28,20 @@ Desweiteren hat die Hausarbeit die Thematik ein analoges reales Parkhaus in ein 
 Weitere Informationen werden von der "SE1 App" für dieses Modul von Herrn Prof. Dr. Manfred Kaul zur Verfügung gestellt:
 <br>https://kaul.inf.h-brs.de/se/#app-content-0-2
 
+Abgabetermin: 08.10.2020 23:55 Uhr.
+
 Die Autoren des Semesterprojekts **Team 23** sind in den Dateien genannt.
 
 ## COVID-19 Pandemie <a name="covid19"></a>
-(*Autor: Team 23*)<br>
 Aufgrund der momentanen COVID-19 Pandemie (Corona-Virus) wurden an dieser Hochschule Maßnahmen getroffen,
 <br>welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
 <br>die Corona-Epidemie-Hochschulverordnung des Landes-Nordrhein-Westfalen beinhalten.
 
 Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pandemie der H-BRS finden Sie unter:
 <br>https://www.h-brs.de/de/corona
+<br><br>(*Autor: Team 23*)
 
 ## Ordnerstruktur <a name="directory"></a>
-(*Autor: Team 23*)<br>
 1. .vs: JSON- und Konfigurationsdateien sind in diesem Verzeichnis.
 2. css: Alle wichtigen standardmäßigen Stylesheets (CSS) aller Seiten (.html) findet man in diesem Ordner.
 3. javascript: Ein Ordner aller benötigten Java-Scripts für die Simulation des Parkhauses.
@@ -51,6 +52,7 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 <br>   In der Readme-Datei enthalten wichtige Informationen über die Software (in dem Fall die Simulation des Parkhauses).
 7. Startseite.html: Die Startseite für das Parkhaus. Hier wird die Anzahl aller Parkplätzen im gesamten Parkhaus gefordert.
 8. Uebersicht.html: Übersicht für die Finanzen des simulierten Parkhauses.
+<br><br>(*Autor: Team 23*)
 
 ## Digitales Projekt <a name="digitalProject"></a>
 Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt digital virtuell umgesetzt werden.
@@ -73,9 +75,9 @@ Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und 
 <br>• das Finanzamt
 <br>• Statistiker
 <br>• und hier auch: Parkhaus-Simulierende
+<br><br>(*Autor: Team 23*)
 
 ## Ziele <a name="goals"></a>
-(*Autor: Team 23*)<br>
 **Frage: Welche Ziele hatten Sie bevor Sie das Projekt entwickelten?**
 <br>Die Ziele wurden allesamt unter unseren User Stories in der von Herrn Prof. Dr. Manfred Kaul entwickelten App veröffentlicht:
 <br>https://kaul.inf.h-brs.de/se
@@ -92,9 +94,9 @@ Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und 
 <br>Zum einen konnten die Umsetzung dieser o.g. User Stories nicht erfüllt werden, zum anderen haben wir
 <br>während der praktischen Umsetzung weitere kreative Ideen und Vorschläge umsetzen könnnen, z.B. die Parkhausuhr.
 <br>Wir präferierten uns letztendlich auf notwendige Funktionalitäten für die Simulation eines virtuellen Parkhauses.
+<br><br>(*Autor: Team 23*)
 
 ## Fazit <a name="conclusion"></a>
-(*Autor: Team 23*)<br>
 Zusammenfassend können wir gemeinsam als Team sagen, dass das Projekt trotz einiger fehlenden Umsetzung für die Notwendigkeit
 <br>einer virtuellen Simulation eines Parkhauses uns sehr viel lehrte, wie wichtig es ist im beruflichen Leben, aber auch
 <br>schon jetzt als Team zu agieren und die Projekte umzusetzen.
@@ -108,11 +110,12 @@ Zusammenfassend können wir gemeinsam als Team sagen, dass das Projekt trotz ein
 <br>• Der Einsatz von Design Patterns war für uns eine unbekannte Umsetzung zur Strukturierung und besseres Verständnis der Quellcodes
 <br>• wie besonders relevant Planungen, Zeiten und Einhaltung sind
 <br>• User Stories, Story und Value Points sind relevant für den späteren Verlauf eines Sprints, um den Projektverlauf zu prognostizieren
+<br><br>(*Autor: Team 23*)
 
 ## Links <a name="url"></a>
-(*Autor: Team 23*)<br>
 • https://kaul.inf.h-brs.de/se
 <br>• https://kaul.inf.h-brs.de/se/#app-content-0-2
 <br>• https://www.h-brs.de/de/corona
 <br>• Herr Prof. Dr. Manfred Kaul: https://www.h-brs.de/de/inf/prof-dr-manfred-kaul
 <br>• Herr Prof. Dr. Sascha Alda: https://www.h-brs.de/de/inf/prof-dr-sascha-alda
+<br><br>(*Autor: Team 23*)
