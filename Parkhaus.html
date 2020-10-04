@@ -168,9 +168,10 @@
 <p id="amountParkingspaceOccupied"></p>
 
 <button onclick="CarsInList()">Neues Auto im Parkhaus</button>
+<button onclick="window.location = 'Uebersicht.html'">Finanz-&Uuml;bersicht</button>
 <br>
 <br>
-
+<script type="text/javascript" src="javascript/overview.js"></script>
 <!--Icons-->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <!--<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>-->
@@ -204,13 +205,15 @@
 <br>
 <!--Show of statistics rates-->
 <button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm ausblenden/anzeigen</button>
-<button id="updateDataPointDiagramm">Diagramm aktualisieren</button>  
+<button id="updateDataPointDiagramm" hidden="true">Diagramm aktualisieren</button>  
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 <script type="text/javascript" src="javascript/observer.js"></script>
 <script type="text/javascript">
-    
 
+// Observer Pattern    
+
+// Subjekt des Observer-Patterns
 var subject = document.getElementById("btnPay");
  
  extend(subject, new Subject());
@@ -218,12 +221,14 @@ var subject = document.getElementById("btnPay");
      subject.notify(subject.click);
  };
 
+// Einer der Observer
  var container = document.getElementById("carContainer");
  extend(container,new Observer());
  container.update = function(value){
     
  }
 
+// Einer der Observer
  var check = document.getElementById("updateDataPointDiagramm");
  check.type = "button";
  extend(check, new Observer());
