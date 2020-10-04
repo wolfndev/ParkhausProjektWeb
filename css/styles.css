@@ -24,6 +24,11 @@ h5 {
 	color: darkorange;
 }
 
+/* Tables */
+th {
+  background-color: #7F7F7F;
+}
+
 /* Light mode */
 body {
 	background-color: white;

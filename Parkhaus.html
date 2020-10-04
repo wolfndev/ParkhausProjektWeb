@@ -89,18 +89,20 @@
         element.classList.toggle("darkmode");
     }
 </script>
+<br>
+<br>
 
-
+<div style="float: left;margin-right:10px">
 <h2>Öffnungszeiten:</h2>
 <table id="openingHours">
-	<thead>
+    <thead>
 		<tr>
 			<th>Wochentag</th>
 			<th>Von</th>
 			<th>bis</th>
         </tr>
-	</thead>
-	<tbody>
+    </thead>
+    <tbody>
 		<tr>
 			<td>Montag - Freitag</td>
 			<td>06:00</td>
@@ -116,10 +118,10 @@
 			<td>10:00</td>
 			<td>20:00</td>
 		</tr>
-	</tbody>
+    </tbody>
 </table>
-
-
+</div>
+<div style="float: left;margin-right:10px">
 <h2>Preise:</h2>
 <table id="priceList">
 	<thead>
@@ -157,14 +159,24 @@
         </tr>
 	</tbody>
 </table>
-
-
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <h4>Anzahl Parkpl&aumltze insgesamt:</h4>
 <p id="amountParkingspace"></p>
 <h4>Anzahl Freier Parkpl&aumltze:</h4>
 <p id="amountParkingspaceFree"></p>
-<h4>Anzahl Besetzter Parkpl&aumltzen:</h4>
+<h4>Anzahl Besetzter Parkpl&aumltze:</h4>
 <p id="amountParkingspaceOccupied"></p>
 
 <button onclick="CarsInList()">Neues Auto im Parkhaus</button>
@@ -240,9 +252,6 @@ var subject = document.getElementById("btnPay");
  subject.addObserver(check);
  subject.addObserver(container);
 
-
-
-
     var i=0;
     var DiagrammEnable=true;
     var carparksize=0;
@@ -293,13 +302,11 @@ var subject = document.getElementById("btnPay");
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
-
         }
         else if (i <= 0) {
             window.alert("Das Parkhaus ist leer.");
         }
-        else
-        {
+        else {
             window.alert("Das Parkhaus ist voll.");
         }
     }
@@ -323,7 +330,7 @@ var subject = document.getElementById("btnPay");
         document.getElementById('rateDisabledPeople').checked==false&&document.getElementById('rateWorker').checked==false){
             window.alert("Sie müssen den zu Ihnen passenden Tarif auswählen, um Ihr Ticket zu bezahlen");
         }
-        else{
+        else {
             i=i-1;
             var list=document.getElementById("autosImParkhausbezahlen");
             var strUser = list.options[list.selectedIndex].value;
@@ -372,7 +379,8 @@ var subject = document.getElementById("btnPay");
                     }
                     b = payedCars(carArray[temp].id, carArray[temp].date, datenow, priceCar, tariff);
                     payedCarsArray.push(b);
-                } else {
+                }
+                else {
                     newHelpArray.push(carArray[temp]);
                 }
 
