@@ -35,9 +35,8 @@ Abgabetermin: 08.10.2020 23:55 Uhr.
 Die Autoren des Semesterprojekts **Team 23** sind in den einzelnen Dateien genannt.
 
 ### 2. COVID-19 Pandemie <a name="covid19"></a>
-Aufgrund der momentanen Lage einer COVID-19 Pandemie mit dem neuen Corona-Virus SARS-CoV-2, wurden
-<br>an dieser Hochschule Maßnahmen getroffen, welche die Vorgaben zur
-<br>Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
+Aufgrund der momentanen Lage einer COVID-19 Pandemie mit dem neuen Corona-Virus SARS-CoV-2, wurden an der H-BRS
+<br>Maßnahmen getroffen, welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
 <br>die Corona-Epidemie-Hochschulverordnung des Landes Nordrhein-Westfalen (NRW) beinhalten.
 
 Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pandemie der H-BRS finden Sie unter:
@@ -61,10 +60,9 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt digital virtuell umgesetzt werden.
 <br>Das Projekt erforderte "User Stories", welche ein wichtiger Teil für den Beginn der Erstellung einer Software ist.
 <br>D.h. die Abläufe vom vorhandenen analogen realen Parkhaus soll durch Simulation realisiert bzw. digitalisiert werden.
-<br>Das digitale Parkhaus muss **nicht** maßstabsgetreu 1:1 (sprich: "1 zu 1") entworfen werden, z.B. über 50 Meter
-<br>Cat7-Kabeln verlegen, Beton, Größe und Höhe des Parkhauses, Baujahr, Dauer der Bebauung, Dauer der voraussichtlichen
-<br>Bauzeit, Anzahl an Mitarbeiter/innen, Lage des Parkhauses im Weltkoordinatensystem
-<br>(z.B.: 50° 46' 49.04" N 7° 10' 54.401" E bzw. 50.780289, 7.181778), etc. .
+<br>Das digitale Parkhaus muss **nicht** maßstabsgetreu 1:1 (sprich: "1 zu 1") entworfen werden, z.B. über 50 Meter Cat7-
+<br>Kabeln verlegen, Größe und Höhe des Parkhauses, Baujahr, Dauer der voraussichtlichen Bauzeit, Anzahl an Mitarbeiter/innen,
+<br>Lage des Parkhauses im Weltkoordinatensystem (z.B.: 50° 46' 49.04" N 7° 10' 54.401" E bzw. 50.780289, 7.181778), etc. .
 <br>Die Webseiten sollen so gut wie möglich eine grobe Übersicht für die Simulationen eines Parkhauses darstellen.
 
 #### 4.1 Zielgruppen <a name="groups"></a>
