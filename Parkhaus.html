@@ -179,11 +179,9 @@
 <h4>Anzahl Besetzter Parkpl&auml;tze:</h4>
 <p id="numberParkingspaceOccupied"></p>
 
-<button onclick="CarsInList()">Neues Auto im Parkhaus</button>
-<button onclick="window.location = 'Uebersicht.html'">Finanz-&Uuml;bersicht</button>
+<button id="btnCarInCarPark" onclick="CarsInList()">Neues Auto im Parkhaus</button>
 <br>
 <br>
-<script type="text/javascript" src="javascript/overview.js"></script>
 <!--Icons-->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <!--<i class="fas fa-car" style="font-size:25px;color:darkorange;"></i>-->
@@ -247,7 +245,9 @@ var subject = document.getElementById("btnPay");
  check.update = function(value){
      pay();
      this.click();
- } 
+ }
+
+
 
  subject.addObserver(check);
  subject.addObserver(container);
@@ -292,23 +292,39 @@ var subject = document.getElementById("btnPay");
         }
     }
 
+    function checkEnoughSpace(){
+        if(i<carparksize){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
     function CarsInList() {
-        if(i<carparksize) {
+        if(checkEnoughSpace()) {
             i=i+1;
             x()
             a=new Auto();
             carArray.push(a);
-            // in Display enter list
+            var container = document.getElementById("carContainer");
+
+            var carImage = document.createElement("img");
+            carImage.src = "car.png";
+            container.appendChild(carImage);
+
+
+
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
-        }
-        else if (i <= 0) {
-            window.alert("Das Parkhaus ist leer.");
-        }
-        else {
-            window.alert("Das Parkhaus ist voll.");
-        }
+        }else{
+            if(i<=0){
+                window.alert("Das Parkhaus ist leer.");
+            }else{
+                window.alert("Das Parkhaus ist voll.");
+            }
+        }    
     }
 
     function refreshList () {
