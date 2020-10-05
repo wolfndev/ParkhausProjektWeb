@@ -55,6 +55,16 @@
                 $("#chartContainer").show();
             }
         });
+        $("#enableDisableTable").click(function () {
+            if (TableEnable == true) {
+                TableEnable = false;
+                $("#model_table").hide();
+            }
+            else if (TableEnable == false) {
+                TableEnable = true;
+                $("#model_table").show();
+            }
+        });
     }
     </script>
 </head>
@@ -216,7 +226,11 @@
 <!--Show of statistics rates-->
 <button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm ausblenden/anzeigen</button>
 <button id="updateDataPointDiagramm" hidden="true">Diagramm aktualisieren</button>  
+<button id="enableDisableTable" onclick="enableDisableTable()">Tabelle anzeigen/ausblenden</button>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<!--tabelle aller Autos die rausgefahren sind-->
+<div id="model_table"></div> <!-- result here --> 
 
 <script type="text/javascript" src="javascript/observer.js"></script>
 <script type="text/javascript">
@@ -254,6 +268,7 @@ var subject = document.getElementById("btnPay");
 
     var i=0;
     var DiagrammEnable=true;
+    var TableEnable=true;
     var carparksize=0;
     carparksize=carPark.getCarParkSpaceCount();
     var pricePerHour=3.0;
@@ -281,7 +296,7 @@ var subject = document.getElementById("btnPay");
         this.date=datee;
         this.leftCarpark=datenow;
         this.price=pricee;
-        this.tariff=tariff;
+        this.tarif=tariff;
     }
 
     var Auto=function () {
@@ -361,39 +376,40 @@ var subject = document.getElementById("btnPay");
                     var millisecondsSubDate = (datenow - carArray[temp].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
-                    var tariff="";
+                    var tarif="";
                     SumCars=SumCars+1;
 
                     if (document.getElementById('noRate').checked) {
                         NoTarifnumber=NoTarifnumber+1;
-                        tariff = 'noRate';
+                        tarif = 'keintarif';
                     }
                     else if (document.getElementById('rateFamily').checked) {
                         family=family+1;
-                        tariff = 'rateFamily';
+                        tarif = 'familientarif';
                         var rateFamily=0.10;
                         priceCar = (priceCar) - (priceCar * rateFamily);
                         
                     }
                     else if (document.getElementById('rateWoman').checked) {
                         women=women+1;
-                        tariff = 'rateWoman';
+                        tarif = 'frauentarif';
                         var rateWoman = 0.05;
                         priceCar = (priceCar) - (priceCar * rateWoman);
                     }
                     else if (document.getElementById('rateDisabledPeople').checked) {
                         disabledPeople=disabledPeople+1;
-                        tariff = 'rateDisabledPeople';
+                        tarif = 'behindertentarif';
                         var rateDisabledPeople=0.30;
                         priceCar=(priceCar)-(priceCar*rateDisabledPeople);
                     }
                     else if (document.getElementById('rateWorker').checked) {
                         worker=worker+1;
-                        tariff = 'rateWorker';
+                        tarif = 'mitarbeitertarif';
                         var rateWorker = 0.20;
                         priceCar = (priceCar) - (priceCar * rateWorker);
                     }
-                    b = payedCars(carArray[temp].id, carArray[temp].date, datenow, priceCar, tariff);
+                    priceCar=priceCar.toFixed(2);
+                    b = new payedCars(carArray[temp].id, carArray[temp].date, datenow, priceCar, tarif);
                     payedCarsArray.push(b);
                 }
                 else {
@@ -412,7 +428,18 @@ var subject = document.getElementById("btnPay");
 
             carArray=newHelpArray;
             refreshList();
+            
+            refreshTable();
         }
+    }
+
+    function refreshTable(){
+        var strTable='<table border="3" frame="void"><tr><th>Auto_id</th><th>Ankunft_am</th><th>Ausgefahren_am</th><th>Tarif</th><th>Preis</th></tr>';
+    for(var counter=0;counter<payedCarsArray.length;counter++){
+        strTable+='<tr><td>'+payedCarsArray[counter].id+'</td><td>'+payedCarsArray[counter].date+'</td><td>'+payedCarsArray[counter].leftCarpark+'</td><td>'+payedCarsArray[counter].tarif+'</td><td>'+payedCarsArray[counter].price+'</td></tr>';
+    }
+        strTable+='</table>';
+        document.getElementById('model_table').innerHTML = strTable; 
     }
 </script>
 
