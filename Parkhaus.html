@@ -389,39 +389,39 @@ var subject = document.getElementById("btnPay");
                     var millisecondsSubDate = (datenow - carArray[temp].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
-                    var tariff="";
-                    SumCars=SumCars+1;
+                    var tarif = "";
+                    SumCars = SumCars + 1;
 
                     if (document.getElementById('noRate').checked) {
-                        NoTarifnumber=NoTarifnumber+1;
-                        tariff = 'Normaler Tarif';
+                        NoTarifnumber = NoTarifnumber + 1;
+                        tarif = 'Normaler Tarif';
                     }
                     else if (document.getElementById('rateFamily').checked) {
-                        family=family+1;
-                        tariff = 'Familientarif';
-                        var rateFamily=0.10;
+                        family = family + 1;
+                        tarif = 'Familientarif';
+                        var rateFamily = 0.10;
                         priceCar = (priceCar) - (priceCar * rateFamily);
-                        
+
                     }
                     else if (document.getElementById('rateWoman').checked) {
-                        women=women+1;
-                        tariff = 'Frauentarif';
+                        women = women + 1;
+                        tarif = 'Frauentarif';
                         var rateWoman = 0.05;
                         priceCar = (priceCar) - (priceCar * rateWoman);
                     }
                     else if (document.getElementById('rateDisabledPeople').checked) {
-                        disabledPeople=disabledPeople+1;
-                        tariff = 'Schwerbehindertentarif';
-                        var rateDisabledPeople=0.30;
-                        priceCar=(priceCar)-(priceCar*rateDisabledPeople);
+                        disabledPeople = disabledPeople + 1;
+                        tarif = 'Schwerbehindertentarif';
+                        var rateDisabledPeople = 0.30;
+                        priceCar = (priceCar) - (priceCar * rateDisabledPeople);
                     }
                     else if (document.getElementById('rateWorker').checked) {
-                        worker=worker+1;
-                        tariff = 'Mitarbeiter-Tarif';
+                        worker = worker + 1;
+                        tarif = 'Mitarbeiter-Tarif';
                         var rateWorker = 0.20;
                         priceCar = (priceCar) - (priceCar * rateWorker);
                     }
-                    priceCar=priceCar.toFixed(2);
+                    priceCar = priceCar.toFixed(2);
                     b = new payedCars(carArray[temp].id, carArray[temp].date, datenow, priceCar, tarif);
                     payedCarsArray.push(b);
                 }
