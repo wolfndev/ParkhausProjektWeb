@@ -310,7 +310,7 @@ var subject = document.getElementById("btnPay");
     function checkEnoughSpace(){
         if(i<carparksize){
             return true;
-        }else{
+        } else {
             return false;
         }
         
@@ -318,14 +318,20 @@ var subject = document.getElementById("btnPay");
 
     function CarsInList() {
         if(checkEnoughSpace()) {
-            i=i+1;
+            i = i + 1
+
             x()
             a=new Auto();
             carArray.push(a);
-            var container = document.getElementById("carContainer");
 
+            // Add picture
+            var id = "img" + i + "";
+            var container = document.getElementById("carContainer");
             var carImage = document.createElement("img");
+
+            carImage.id = id;
             carImage.src = "car.png";
+
             container.appendChild(carImage);
 
 
@@ -333,10 +339,10 @@ var subject = document.getElementById("btnPay");
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
-        }else{
+        } else {
             if(i<=0){
                 window.alert("Das Parkhaus ist leer.");
-            }else{
+            } else {
                 window.alert("Das Parkhaus ist voll.");
             }
         }    
@@ -362,7 +368,14 @@ var subject = document.getElementById("btnPay");
             window.alert("Sie müssen den zu Ihnen passenden Tarif auswählen, um Ihr Ticket zu bezahlen");
         }
         else {
-            i=i-1;
+            // Delete picture
+            var id = "img" + i + "";
+            var container = document.getElementById("carContainer");
+            var carImage = document.getElementById(id);
+            container.removeChild(carImage);
+
+            i = i - 1;
+
             var list=document.getElementById("autosImParkhausbezahlen");
             var strUser = list.options[list.selectedIndex].value;
             var splittet=strUser.split(": ");
