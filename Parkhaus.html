@@ -389,35 +389,35 @@ var subject = document.getElementById("btnPay");
                     var millisecondsSubDate = (datenow - carArray[temp].date);
                     var secondsSubDates = millisecondsSubDate / 1000;
                     var priceCar = secondsSubDates * pricePerHour;
-                    var tarif="";
+                    var tariff="";
                     SumCars=SumCars+1;
 
                     if (document.getElementById('noRate').checked) {
                         NoTarifnumber=NoTarifnumber+1;
-                        tarif = 'keintarif';
+                        tariff = 'Normaler Tarif';
                     }
                     else if (document.getElementById('rateFamily').checked) {
                         family=family+1;
-                        tarif = 'familientarif';
+                        tariff = 'Familientarif';
                         var rateFamily=0.10;
                         priceCar = (priceCar) - (priceCar * rateFamily);
                         
                     }
                     else if (document.getElementById('rateWoman').checked) {
                         women=women+1;
-                        tarif = 'frauentarif';
+                        tariff = 'Frauentarif';
                         var rateWoman = 0.05;
                         priceCar = (priceCar) - (priceCar * rateWoman);
                     }
                     else if (document.getElementById('rateDisabledPeople').checked) {
                         disabledPeople=disabledPeople+1;
-                        tarif = 'behindertentarif';
+                        tariff = 'Schwerbehindertentarif';
                         var rateDisabledPeople=0.30;
                         priceCar=(priceCar)-(priceCar*rateDisabledPeople);
                     }
                     else if (document.getElementById('rateWorker').checked) {
                         worker=worker+1;
-                        tarif = 'mitarbeitertarif';
+                        tariff = 'Mitarbeiter-Tarif';
                         var rateWorker = 0.20;
                         priceCar = (priceCar) - (priceCar * rateWorker);
                     }
@@ -428,8 +428,6 @@ var subject = document.getElementById("btnPay");
                 else {
                     newHelpArray.push(carArray[temp]);
                 }
-
-
             }
 
             var x;
