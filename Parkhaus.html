@@ -226,10 +226,10 @@
 <!--Show of statistics rates-->
 <button id="enableDisableDiagramm" onclick="enableDisableDiagramm()">Diagramm ausblenden/anzeigen</button>
 <button id="updateDataPointDiagramm" hidden="true">Diagramm aktualisieren</button>  
-<button id="enableDisableTable" onclick="enableDisableTable()">Tabelle anzeigen/ausblenden</button>
+<button id="enableDisableTable" onclick="enableDisableTable()">Tabelle ausblenden/anzeigen</button>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
-<!--tabelle aller Autos die rausgefahren sind-->
+<!--Table of all cars driving out-->
 <div id="model_table"></div> <!-- result here --> 
 
 <script type="text/javascript" src="javascript/observer.js"></script>
@@ -237,22 +237,21 @@
 
 // Observer Pattern    
 
-// Subjekt des Observer-Patterns
+// Subject of Observer Patterns
 var subject = document.getElementById("btnPay");
- 
  extend(subject, new Subject());
  subject.onclick = function(){
      subject.notify(subject.click);
  };
 
-// Einer der Observer
+// One of Observer
  var container = document.getElementById("carContainer");
  extend(container,new Observer());
  container.update = function(value){
     
  }
 
-// Einer der Observer
+// One of Observer
  var check = document.getElementById("updateDataPointDiagramm");
  check.type = "button";
  extend(check, new Observer());
@@ -260,8 +259,6 @@ var subject = document.getElementById("btnPay");
      pay();
      this.click();
  }
-
-
 
  subject.addObserver(check);
  subject.addObserver(container);
@@ -310,7 +307,8 @@ var subject = document.getElementById("btnPay");
     function checkEnoughSpace(){
         if(i<carparksize){
             return true;
-        } else {
+        }
+        else {
             return false;
         }
         
@@ -334,15 +332,15 @@ var subject = document.getElementById("btnPay");
 
             container.appendChild(carImage);
 
-
-
             var option = new Option('Autoid: '+a.id);
             var selectpayList= document.getElementById('autosImParkhausbezahlen');
             selectpayList.options[i-1]=option;
-        } else {
+        }
+        else {
             if(i<=0){
                 window.alert("Das Parkhaus ist leer.");
-            } else {
+            }
+            else {
                 window.alert("Das Parkhaus ist voll.");
             }
         }    
@@ -363,8 +361,11 @@ var subject = document.getElementById("btnPay");
         if (i == 0) {
             window.alert("Im Parkhaus sind keine Autos (mehr).\nSie können kein Ticket bezahlen.");
         }
-        else if(document.getElementById('noRate').checked==false&&document.getElementById('rateFamily').checked==false&&document.getElementById('rateWoman').checked==false&&
-        document.getElementById('rateDisabledPeople').checked==false&&document.getElementById('rateWorker').checked==false){
+        else if (document.getElementById('noRate').checked == false &&
+                document.getElementById('rateFamily').checked == false &&
+                document.getElementById('rateWoman').checked == false &&
+                document.getElementById('rateDisabledPeople').checked == false &&
+                document.getElementById('rateWorker').checked == false) {
             window.alert("Sie müssen den zu Ihnen passenden Tarif auswählen, um Ihr Ticket zu bezahlen");
         }
         else {
@@ -446,9 +447,11 @@ var subject = document.getElementById("btnPay");
 
     function refreshTable(){
         var strTable='<table border="3" frame="void"><tr><th>Auto_id</th><th>Ankunft_am</th><th>Ausgefahren_am</th><th>Tarif</th><th>Preis</th></tr>';
-    for(var counter=0;counter<payedCarsArray.length;counter++){
-        strTable+='<tr><td>'+payedCarsArray[counter].id+'</td><td>'+payedCarsArray[counter].date+'</td><td>'+payedCarsArray[counter].leftCarpark+'</td><td>'+payedCarsArray[counter].tarif+'</td><td>'+payedCarsArray[counter].price+'</td></tr>';
-    }
+
+        for (var counter = 0; counter < payedCarsArray.length; counter++){
+            strTable+='<tr><td>'+payedCarsArray[counter].id+'</td><td>'+payedCarsArray[counter].date+'</td><td>'+payedCarsArray[counter].leftCarpark+'</td><td>'+payedCarsArray[counter].tarif+'</td><td>'+payedCarsArray[counter].price+'</td></tr>';
+        }
+
         strTable+='</table>';
         document.getElementById('model_table').innerHTML = strTable; 
     }
