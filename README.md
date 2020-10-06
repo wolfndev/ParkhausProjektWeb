@@ -54,7 +54,7 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 <br>   In der Readme-Datei enthalten wichtige Informationen über die Software (in dem Fall die Simulation des Parkhauses).
 7. Startseite.html: Die Startseite für das Parkhaus. Die Anzahl aller Parkplätzen im gesamten Parkhaus wird festgelegt.
 
-<br><br>(*Autor: Team 23*)
+<br>(*Autor: Team 23*)
 
 ### 4. Digitales Projekt <a name="digitalProject"></a>
 Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt digital virtuell umgesetzt werden.
