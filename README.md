@@ -23,7 +23,7 @@ In diesem o.g. Modul wurde aufgrund der aktuellen Situation einer Corona-/COVID-
 <br>• Zweitprüfer: Herr Prof. Dr. Sascha Alda: https://www.h-brs.de/de/inf/prof-dr-sascha-alda
 
 Desweiteren hat die Hausarbeit die Thematik ein analoges reales Parkhaus in ein digitales virtuelles Parkhaus zu
-<br>simulieren mit den in der digitalen Lehre (20.04.2020-03.07.2020) erlernten Themen beispielsweise "Patterns" umzusetzen.
+<br>simulieren mit den in der digitalen Lehre (20.04.2020-03.07.2020) erlernten Themen bspw. "Patterns" umzusetzen.
 <br>Die digitale Lehre wurde als PDF-, Audio- und Video-Formaten in der von Herrn Prof. Dr. Manfred Kaul entwickelten App veröffentlicht:
 <br>https://kaul.inf.h-brs.de/se
 
@@ -35,8 +35,8 @@ Abgabetermin: 08.10.2020 23:55 Uhr (MESZ).
 Die Autoren des Semesterprojekts **Team 23** sind in den einzelnen Dateien genannt.
 
 ### 2. COVID-19 Pandemie <a name="covid19"></a>
-Aufgrund der momentanen Lage einer COVID-19 Pandemie mit dem neuen Corona-Virus SARS-CoV-2, wurden an der H-BRS
-<br>Maßnahmen getroffen, welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
+Aufgrund der momentanen Lage einer COVID-19 Pandemie mit dem neuen Corona-Virus SARS-CoV-2, wurden an der
+<br>H-BRS Maßnahmen getroffen, welche die Vorgaben zur Corona-Schutz-Verordnung (Verordnung CoronaSchVO) und
 <br>die Corona-Epidemie-Hochschulverordnung des Landes Nordrhein-Westfalen (NRW) beinhalten.
 
 Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pandemie der H-BRS finden Sie unter:
@@ -52,7 +52,7 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 <br>   und Tickets für das Parkhaus bezahlen.
 6. README.md: Readme (Englisch, Deutsch: Lies mich) ist eine Datei, die immer mit zur Software geliefert wird.
 <br>   In der Readme-Datei enthalten wichtige Informationen über die Software (in dem Fall die Simulation des Parkhauses).
-7. Startseite.html: Die Startseite für das Parkhaus. Hier wird die Anzahl aller Parkplätzen im gesamten Parkhaus festgelegt.
+7. Startseite.html: Die Startseite für das Parkhaus. Die Anzahl aller Parkplätzen im gesamten Parkhaus wird festgelegt.
 <br><br>(*Autor: Team 23*)
 
 ### 4. Digitales Projekt <a name="digitalProject"></a>
@@ -60,8 +60,8 @@ Die Umsetzung eines analogen realen Parkhauses soll für dieses Semesterprojekt 
 <br>Das Projekt erforderte "User Stories", welche ein wichtiger Teil für den Beginn der Erstellung einer Software ist.
 <br>D.h. die Abläufe vom vorhandenen analogen realen Parkhaus soll durch Simulation realisiert bzw. digitalisiert werden.
 <br>Das digitale Parkhaus muss **nicht** maßstabsgetreu 1:1 (sprich: "eins zu eins") entworfen werden, z.B. 100 Meter Cat7-
-<br>Kabeln verlegen, Größe und Höhe des Parkhauses, Baujahr, Dauer der voraussichtlichen Bauzeit, Anzahl an Mitarbeiter/innen,
-<br>Lage des Parkhauses im Weltkoordinatensystem (z.B.: 50° 46' 49.04" N 7° 10' 54.401" E bzw. 50.780289, 7.181778), etc. .
+<br>Kabeln verlegen, Größe und Höhe des Parkhauses, Baujahr, Dauer der voraussichtlichen Bauzeit, Lage des Parkhauses
+<br>im Weltkoordinatensystem (zum Beispiel: 50° 46' 49.04" N 7° 10' 54.401" E bzw. 50.780289, 7.181778).
 <br>Die Webseiten sollen so gut wie möglich eine grobe Übersicht für die Simulationen eines Parkhauses darstellen.
 
 #### 4.1 Zielgruppen <a name="groups"></a>
@@ -78,7 +78,7 @@ Das umgesetzte digitale virtuelle Parkhaus berücksichtigt folgende Kunden- und 
 <br>• und hier auch: Parkhaus-Simulierende
 
 #### 4.2 Funktionalität <a name="functionality"></a>
-Das Semesterprojekt beinhaltet Dateien mit deren Endungen ".html", welche folgende Funktionalitäten inbegriffen sind:
+Das Projekt beinhaltet Dateien mit deren Endungen ".html", welche folgende Funktionalitäten inbegriffen sind:
 <br>1. Startseite.html: Benutzereingabe für die Anzahl der zuerstellenden virtuellen Parkplätze im Parkhaus wird benötigt
 <br>2. Parkhaus.html: Parkhaussimulation (PKW ein-/ausfahren), Ticket bezahlen, Statistik und Tabelle anfordern
 <br><br>(*Autor: Team 23*)
@@ -105,8 +105,8 @@ Das Semesterprojekt beinhaltet Dateien mit deren Endungen ".html", welche folgen
 
 ### 6. Fazit <a name="conclusion"></a>
 Zusammenfassend können wir gemeinsam als Team sagen, dass das Projekt trotz einiger fehlenden Umsetzung für
-<br>die Notwendigkeit der virtuellen Simulation eines Parkhauses uns sehr viel lehrte, wie wichtig es ist
-<br>im Berufsleben, aber auch schon jetzt als Team zu agieren und die Projekte umzusetzen.
+<br>die Notwendigkeit der virtuellen Simulation eines Parkhauses uns sehr viel lehrte, wie wichtig es ist im Berufsleben,
+<br>aber auch schon jetzt als Team zu agieren und die Projekte umzusetzen.
 <br>Einerseits spielte uns die Kommunikation im Team eine wichtige Rolle. Aufgrund der [COVID-19-Pandemie (Punkt 2)](#covid19)
 <br>nutzten wir verstärkt diverse Kommunikationsplattformen, anstelle von persönlichen präsenten Team-Meetings.
 <br>Die Kommunikationen fanden auf diversen virtuellen (Kommunikations-)Plattformen statt:
