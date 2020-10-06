@@ -53,6 +53,7 @@ Weitere Informationen zur Anordnungen, Informationen zur aktuellen COVID-19 Pand
 6. README.md: Readme (Englisch, Deutsch: Lies mich) ist eine Datei, die immer mit zur Software geliefert wird.
 <br>   In der Readme-Datei enthalten wichtige Informationen über die Software (in dem Fall die Simulation des Parkhauses).
 7. Startseite.html: Die Startseite für das Parkhaus. Die Anzahl aller Parkplätzen im gesamten Parkhaus wird festgelegt.
+
 <br><br>(*Autor: Team 23*)
 
 ### 4. Digitales Projekt <a name="digitalProject"></a>
