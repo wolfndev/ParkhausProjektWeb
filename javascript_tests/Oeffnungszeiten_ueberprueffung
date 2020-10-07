@@ -1,0 +1,37 @@
+
+function Oeffnungszeiten_ueberprueffung(datenow){
+
+  datenow_mil = ((datenow.getHours()*60*60*1000)
+              + (datenow.getMinutes())*60*1000
+              + (datenow.getSeconds())*1000)
+  console.log("\nDer zu prüfende Tag ist:" + datenow.getDay()
+            + "\nDerZeit in Millisekunden: " + datenow_mil)
+  if (datenow.getDay() == 0
+      || datenow.getDay() == 1
+      || datenow.getDay() == 4
+      || datenow.getDay() == 5
+      || datenow.getDay() == 6)
+  {
+    test('Ueberzug laenger als einer halben Stunde ist nicht erlaubt.', () => {
+
+    expect(datenow_mil).toBeGreaterThan(21600000)
+    expect(datenow_mil).toBeLessThan(81000000)
+    });
+  }
+  if (datenow.getDay() == 2)
+  {
+    test('Ueberzug laenger als einer halben Stunde ist nicht erlaubt.', () => {
+
+    expect(datenow_mil).toBeGreaterThan(28800000)
+    });
+  }
+  if (datenow.getDay() == 3)
+  {
+    test('Ueberzug laenger als einer halben Stunde ist nicht erlaubt.', () => {
+
+    expect(datenow_mil).toBeGreaterThan(36000000)
+    expect(datenow_mil).toBeLessThan(73800000)
+    });
+  }
+}
+module.exports = Oeffnungszeiten_ueberprueffung

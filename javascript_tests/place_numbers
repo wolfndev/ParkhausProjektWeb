@@ -1,0 +1,11 @@
+function place_numbers(a){
+  // Returns an truthful(Wahrheitswert bzw. True/False)
+  var temp;
+  if (a > 0){
+      temp = "true"
+    } else {
+      temp = "false"
+    }
+    return temp
+}
+module.exports = place_numbers
