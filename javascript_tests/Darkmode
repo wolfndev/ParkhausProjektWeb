@@ -1,0 +1,13 @@
+
+function Darkmode(a){
+  console.log("Ueberprueefung der aktuellen Farbe")
+  test('Wechselueberpruefung auf weiß.', () => {
+    expect(check_darkmode).toBeGreaterThan("white")
+  });
+
+  test('Wechselueberpruefung auf schwarz.', () => {
+    expect(check_darkmode).toBeLessThan("black")
+  });
+
+}
+module.exports = Darkmode
